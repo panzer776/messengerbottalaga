@@ -1,0 +1,16 @@
+{"commands":"type !𝘩𝘦𝘭𝘱 <𝘤𝘰𝘮𝘮𝘢𝘯𝘥> to show a more detailed info \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘩𝘦𝘭𝘱 𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨: \n !𝘵𝘳𝘶𝘮𝘱 <𝘵𝘦𝘹𝘵> \n !𝘢𝘯𝘰𝘯𝘺𝘮𝘰𝘶𝘴 <𝘵𝘦𝘹𝘵> \n !𝘦𝘤𝘩𝘰 <𝘵𝘦𝘹𝘵> \n !𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n !𝘨𝘰𝘰𝘨𝘭𝘦 <𝘵𝘦𝘹𝘵> \n !𝘨𝘳𝘰𝘶𝘱𝘪𝘯𝘧𝘰 \n !𝘣𝘢𝘭𝘢𝘯𝘤𝘦 \n !𝘨𝘪𝘷𝘦 <𝘮𝘰𝘯𝘦𝘺> <@𝘶𝘴𝘦𝘳> \n !𝘱𝘪𝘯𝘨 \n !𝘥𝘢𝘪𝘭𝘺 \n !𝘯𝘪𝘤𝘬 <𝘯𝘢𝘮𝘦> \n !𝘺𝘵𝘮𝘱3 <𝘭𝘪𝘯𝘬> (broken) \n !𝘴𝘪𝘮 <𝘵𝘦𝘹𝘵> \n !𝘳𝘢𝘯𝘥𝘰𝘮𝘱𝘪𝘤",
+"trump":"donald trump will tweet the inputted text \n \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘵𝘸𝘵 𝘪 𝘮𝘪𝘴𝘴 𝘶",
+"anonymous":"will send a message to a groupchat and the sender will be anonymous. if there is only one mutual groupchat, the message will be sent there.  \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚 \n!𝘢𝘯𝘰𝘯𝘺𝘮𝘰𝘶𝘴 𝘪 𝘮𝘪𝘴𝘴 𝘶",
+"echo":"will repeat the inputted text\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘦𝘤𝘩𝘰 𝘪 𝘮𝘪𝘴𝘴 𝘺𝘰𝘶",
+"roulette":"𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨: \n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 <𝘮𝘰𝘯𝘦𝘺> <𝘱𝘭𝘢𝘤𝘦>\n!𝘳𝘰𝘭𝘭\n!𝘵𝘢𝘣𝘭𝘦\n\n𝙋𝙖𝙮𝙤𝙪𝙩 𝙈𝙪𝙡𝙩𝙞𝙥𝙡𝙞𝙚𝙧𝙨:\n[x36] single number\n[x3] dozens (1-12, 13-24, 25-36)\n[x3] columns (1st, 2nd, 3rd)\n[x2] halves (1-18, 19-36)\n[x2] odd/even\n[x2] colors (red, black)\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚𝙨:\n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 150 1-18\n!𝘳𝘰𝘭𝘭\n\n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 1000 1𝘴𝘵\n!𝘳𝘰𝘭𝘭\n\n𝙏𝙖𝙗𝙡𝙚:",
+"google":"will search anything. this command is experimental and might not work properly.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘰𝘰𝘨𝘭𝘦 𝘸𝘩𝘰 𝘪𝘴 𝘴𝘵𝘦𝘱𝘩𝘦𝘯 𝘩𝘢𝘸𝘬𝘪𝘯𝘨",
+"groupinfo":"even a 5 year old would know what is this for and how to use this command.",
+"balance":"shows your current money. users who are new will receive 10 coins.",
+"give":"will give money from your balance to another user. if mentioning doesn't work, try using the user's profile id \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨",
+"ping":"detects the server latency",
+"daily":"collects the free daily coins ranging from 50-100 coins",
+"nick":"changes your nickname.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘯𝘪𝘤𝘬 𝘱𝘢𝘯𝘻𝘦𝘳",
+"ytmp3":"downloads audio from youtube. the link will be sent where you can download it, but it will be long as i only use free google streaming site.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚\n!𝘺𝘵𝘮𝘱3 𝘪 𝘭𝘰𝘷𝘦 𝘺𝘰𝘶 𝘴𝘰 - 𝘵𝘩𝘦 𝘸𝘢𝘭𝘵𝘦𝘳𝘴",
+"sim":"wanna chat with me?\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘴𝘪𝘮 𝘩𝘪,𝘩𝘰𝘸 𝘢𝘳𝘦 𝘺𝘰𝘶?",
+"randompic":"sends a random picture from the internet"
+}
