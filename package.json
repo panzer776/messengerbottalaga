@@ -19,6 +19,7 @@
     "play-dl": "^1.9.6",
     "q": "^1.5.1",
     "request": "^2.88.2",
+    "scrape-youtube": "^2.3.2",
     "string-similarity": "^4.0.4",
     "unfluff": "^3.2.0"
   }
