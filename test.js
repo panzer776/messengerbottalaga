@@ -1,8 +1,3 @@
-const Client = require("omegle-client")
+const play = require('play-dl');
 
-var om = new Client()
-
-om.on("waiting", () => {console.log("waiting")})
-
-om.on("error", () => { console.log("err") })
-om.start()
+play.video_info("Xb85Sz28S8Q").then(r=>console.log(r.format))

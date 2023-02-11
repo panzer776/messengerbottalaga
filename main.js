@@ -10,8 +10,8 @@ const google = require("googlethis")
 const axios = require("axios")
 const request = require("request")
 const cb = require("cleverbot-free")
-//const ytdl = require("ytdl-core") BROS FUCKING BANNED IN THE HOSTING SERVERRRR
-//const { youtube } = require("scrape-youtube")
+const ytdl = require("play-dl") //ytdl-core is banned
+const { youtube } = require("scrape-youtube")
 const unfluff = require("unfluff")
 const similarity = require("string-similarity")
 const response = JSON.parse(fs.readFileSync("response.json", "utf8"))
@@ -68,7 +68,6 @@ login(credential, (err, api) => {
 			eventTraffic.push([eventType,message, threadID])
 			loop()
 		} else { eventTraffic.push([eventType, message, threadID]) }
-		console.log(eventTraffic)
 		async function loop() {
 			while (eventTraffic.length != 0) {
 				if (eventTraffic[0][0] == "message") {
@@ -80,7 +79,6 @@ login(credential, (err, api) => {
 				}
 				await new Promise(resolve => setTimeout(resolve, 500))
 				eventTraffic.shift()
-				console.log(eventTraffic)
 			}
 		}
 
@@ -217,7 +215,7 @@ login(credential, (err, api) => {
 								requestSend("message", event.body.substr(10, event.body.length - 1).concat("\n\n-anon"), mutualgroups[0].threadID); return
 							case (mutualgroups.length > 1):
 								anons[event.threadID] = [mutualgroups, event.body.substr(10, event.body.length)]
-								var msg = "type the number of the group chat where the message will be sent\nto exit the command, type 0 \n\n"
+								var msg = "type the number of the group chat where the message will be sent.\nto exit the command, type 0 \n\n"
 								for (let i = 0; i < mutualgroups.length; i++) {
 									msg = msg.concat(i + 1, ". ", !mutualgroups[i].name ? "[no name]" : mutualgroups[i].name, "\n");
 								}
@@ -227,8 +225,8 @@ login(credential, (err, api) => {
 				}
 				if (!isNaN(parseInt(event.body)) && Object.keys(anons).includes(event.threadID)) {
 					if (event.body > anons[event.threadID][0].length || event.body < 1) {
-						return requestSend("message", "command aborted", event.threadID)
-						delete anons[event.threadID]
+						requestSend("message", "command aborted", event.threadID)
+						return delete anons[event.threadID]
 					}
 					requestSend("message", anons[event.threadID][1].concat("\n\n-anon"), anons[event.threadID][0][parseInt(event.body) - 1].threadID)
 					delete anons[event.threadID]
@@ -402,7 +400,6 @@ login(credential, (err, api) => {
 				}
 
 				//MP3 DOWNLOADER
-				/*
 				if (event.body.toLowerCase().startsWith("!ytmp3 ")) {
 					youtube.search(event.body.substr(6, event.body.length)).then((res) => {
 						if (res.videos.length == 0) { return requestSend("message", "no videos found. try using other keywords", event.threadID) }
@@ -420,21 +417,20 @@ login(credential, (err, api) => {
 				if (!isNaN(parseInt(event.body)) && Object.keys(mp3).includes(event.threadID)) {
 					if (event.body > mp3[event.threadID].length || event.body < 1) { return requestSend("message", "command aborted", event.threadID); delete mp3[event.threadID]; }
 					var bitrates = []
-					ytdl.getInfo((mp3[event.threadID][parseInt(event.body) - 1]).id).then(info => {
-						for (let i = 0; i < info.formats.length; i++) {
-							if (info.formats[i].mimeType.split(" ")[0] == "audio/mp4;" || info.formats[i].mimeType.split(" ")[0] == "audio/webm;") { bitrates.push(info.formats[i].audioBitrate) }
+					ytdl.video_info((mp3[event.threadID][parseInt(event.body) - 1]).id).then(info => {
+						for (let i = 0; i < info.format.length; i++) {
+							if (info.format[i].mimeType.split(" ")[0] == "audio/mp4;" || info.format[i].mimeType.split(" ")[0] == "audio/webm;") { bitrates.push(info.format[i].bitrate) }
 						}
 						if (!bitrates.length > 0) { return requestSend("message", "either the link doesn't work or the video is secured and cannot be downloaded", event.threadID) }
 						bitrates = Math.max.apply(Math, bitrates)
-						for (let i = 0; i < info.formats.length; i++) {
-							if (info.formats[i].audioBitrate == bitrates) {
-								return requestSend("message", "Audio Quality: ".concat(info.formats[i].audioQuality.split("_")[2], "\n\n", info.formats[i].url), event.threadID);
+						for (let i = 0; i < info.format.length; i++) {
+							if (info.format[i].bitrate == bitrates) {
+								return requestSend("message", "Audio Quality: ".concat(info.format[i].audioQuality.split("_")[2], "\n\n", info.format[i].url), event.threadID);
 							}
 						}
 					})
 					return delete mp3[event.threadID]
 				}
-				*/
 
 				//RANDOM PIC
                 if (event.body.toLowerCase() == "!randompic") {
