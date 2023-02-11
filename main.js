@@ -400,7 +400,7 @@ login(credential, (err, api) => {
 				}
 
 				//MP3 DOWNLOADER
-				if (event.body.toLowerCase().startsWith("!ytmp3 ")) {
+				if (event.body.toLowerCase().startsWith("!ytamp3 ")) {
 					youtube.search(event.body.substr(6, event.body.length)).then((res) => {
 						if (res.videos.length == 0) { return requestSend("message", "no videos found. try using other keywords", event.threadID) }
 						var msg = ""
