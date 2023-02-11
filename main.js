@@ -10,8 +10,8 @@ const google = require("googlethis")
 const axios = require("axios")
 const request = require("request")
 const cb = require("cleverbot-free")
-const ytdl = require("ytdl-core")
-const { youtube } = require("scrape-youtube")
+//const ytdl = require("ytdl-core") BROS FUCKING BANNED IN THE HOSTING SERVERRRR
+//const { youtube } = require("scrape-youtube")
 const unfluff = require("unfluff")
 const similarity = require("string-similarity")
 const response = JSON.parse(fs.readFileSync("response.json", "utf8"))
@@ -402,6 +402,7 @@ login(credential, (err, api) => {
 				}
 
 				//MP3 DOWNLOADER
+				/*
 				if (event.body.toLowerCase().startsWith("!ytmp3 ")) {
 					youtube.search(event.body.substr(6, event.body.length)).then((res) => {
 						if (res.videos.length == 0) { return requestSend("message", "no videos found. try using other keywords", event.threadID) }
@@ -433,6 +434,7 @@ login(credential, (err, api) => {
 					})
 					return delete mp3[event.threadID]
 				}
+				*/
 
 				//RANDOM PIC
                 if (event.body.toLowerCase() == "!randompic") {
