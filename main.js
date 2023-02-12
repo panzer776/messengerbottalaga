@@ -60,7 +60,7 @@ login(credential, (err, api) => {
 	//SAVE DATA PER TIME
 	saveData()
 	async function saveData() {
-		await new Promise(r => setTimeout(r, 20000 + (Math.random() * 10000)))
+		await new Promise(r => setTimeout(r, 200000 + (Math.random() * 100000)))
 		var attachments = []
 		api.sendMessage({ body: "BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), attachment: attachments }, storage)
 		saveData()
