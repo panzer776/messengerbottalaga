@@ -142,7 +142,7 @@ login(credential, (err, api) => {
 					rouletteInfo[threadID].timestamp += 1
 					if (rouletteInfo[threadID].timestamp > 180) {
 						rouletteInfo[threadID].timestamp = -1
-						return sendRequest("message", "roulette has been turned off since its inactive", threadID)
+						return requestSend("message", "roulette has been turned off since its inactive", threadID)
 					}
 				}
 			}
@@ -215,7 +215,7 @@ login(credential, (err, api) => {
 					}
 
 					//GET GROUP INFO COMMAND
-					if (event.body.toLowerCase() == "!groupinfo") {
+					if (event.body.toLowerCase() == "!groupinfo" || event.body.toLowerCase() == "!gcinfo") {
 						if (event.isGroup == false) { return api.sendMessage("that command only works in groupchats", event.threadID) };
 						api.getThreadInfo(event.threadID, (err, data) => {
 							requestSend("message", "group name: ".concat(!data.threadName ? " [no name]" : data.threadName, "\n", "members: ", data.participantIDs.length, "\n", "message count: ", data.messageCount, "\n"), event.threadID)
