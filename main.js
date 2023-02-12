@@ -123,7 +123,7 @@ login(credential, (err, api) => {
 		async function listenMessageRequest() {
 			console.log("listening for message request")
 			listenRequest(["PENDING"]); listenRequest(["OTHER"]);
-			await new Promise(resolve => setTimeout(resolve, 25000))
+			await new Promise(resolve => setTimeout(resolve, 120000+(Math.round(Math.random()*30000))))
 			listenMessageRequest()
 		}
 
