@@ -188,7 +188,7 @@ login(credential, (err, api) => {
 					if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
 					if (event.body == "!savedata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), storage) }
 					if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
-					if (event.body == "!msgcount") { return countlog.toString() }
+					if (event.body == "!msgcount") { return api.sendMessage(countlog.toString(),event.threadID); console.log(countlog) }
 
 
 					//MAIN
