@@ -45,6 +45,16 @@ function ord(i) {
 	return i + "th";
 }
 
+var countlog = []
+var count = 0
+countmsg()
+async function countmsg() {
+	await new Promise(r=>setTimeout(r,3600000))
+	countlog.push(count)
+	count = 0
+	countmsg()
+}
+
 login(credential, (err, api) => {
 
 	//TRIES TO RETRIEVE DATA WHEN BOT STARTS
@@ -85,7 +95,7 @@ login(credential, (err, api) => {
 			async function loop() {
 				while (eventTraffic.length != 0) {
 					if (eventTraffic[0][0] == "message") {
-						api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { !callback ? 0 : callback(err, inf) }, messageID)
+						api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { !callback ? 0 : callback(err, inf); count+=1 }, messageID)
 					} else if (eventTraffic[0][0] == "changeNickname") {
 						api.changeNickname(message, threadID, senderID, (err) => {
 							if (err) api.sendMessage("nickname too long", event.threadID)
@@ -174,9 +184,11 @@ login(credential, (err, api) => {
 					}
 
 					//MY COMMANDS
-					if (event.body.startsWith == "!kaching") { leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
-					if (event.body == "!botdata") { api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
-					if (event.body == "!savedata") { api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), storage) }
+					if (event.body.startsWith() == "!kaching "&&!isNaN(parseInt(event.body.split(" ")[1]))) { leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
+					if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
+					if (event.body == "!savedata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), storage) }
+					if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
+					if (event.body == "!msgcount") { return countlog.toString() }
 
 
 					//MAIN
