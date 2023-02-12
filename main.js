@@ -60,7 +60,7 @@ login(credential, (err, api) => {
 	//SAVE DATA PER TIME
 	saveData()
 	async function saveData() {
-		await new Promise(r => setTimeout(r, 200000 + (Math.random() * 100000)))
+		await new Promise(r => setTimeout(r, 300000 + (Math.random() * 100000)))
 		var attachments = []
 		api.sendMessage({ body: "BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), attachment: attachments }, storage)
 		saveData()
@@ -91,7 +91,7 @@ login(credential, (err, api) => {
 							if (err) api.sendMessage("nickname too long", event.threadID)
 						})
 					}
-					await new Promise(resolve => setTimeout(resolve, 500))
+					await new Promise(resolve => setTimeout(resolve, 900))
 					eventTraffic.shift()
 				}
 			}
@@ -113,7 +113,7 @@ login(credential, (err, api) => {
 		async function listenMessageRequest() {
 			console.log("listening for message request")
 			listenRequest(["PENDING"]); listenRequest(["OTHER"]);
-			await new Promise(resolve => setTimeout(resolve, 20000))
+			await new Promise(resolve => setTimeout(resolve, 25000))
 			listenMessageRequest()
 		}
 
@@ -588,7 +588,6 @@ login(credential, (err, api) => {
 						welcomefarewell(event.threadID, event.logMessageData.addedParticipants[0].userFbId, "welcome")
 					}
 					if (threads[event.threadID] && event.logMessageType == "log:unsubscribe") {
-						console.log("works")
 						welcomefarewell(event.threadID, event.logMessageData.leftParticipantFbId, "farewell")
 					}
 
