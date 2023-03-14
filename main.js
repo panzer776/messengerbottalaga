@@ -193,7 +193,7 @@ login(credential, (err, api) => {
 
 					//MAIN
 
-					if (similarity.compareTwoStrings("!commands", event.body.split(" ")[0].toLowerCase()) > 0.85) {
+					if ((similarity.compareTwoStrings("!commands", event.body.split(" ")[0].toLowerCase()) > 0.85) || (similarity.compareTwoStrings("!help", event.body.split(" ")[0].toLowerCase()))) {
 						requestSend("message", response.commands, event.threadID, async (err, info) => {
 							await new Promise(r => setTimeout(r, 1200000))
 							api.unsendMessage(info.messageID)
