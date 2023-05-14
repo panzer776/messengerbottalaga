@@ -62,7 +62,7 @@ var quotelist
 (async () => {
 	axios.get("https://type.fit/api/quotes").then(resp=>{quotelist=resp.data})
 	if(true){
-		const browser = await puppeteer.launch();
+		const browser = await puppeteer.launch({headless:true, args: ['--no-sandbox']});
 		const page = await browser.newPage();
 		await page.goto('https://www.facebook.com/login.php');
 		await page.type('#email', process.env.EMAIL);
