@@ -1,27 +1,29 @@
-{"commands":"type !𝘩𝘦𝘭𝘱 <𝘤𝘰𝘮𝘮𝘢𝘯𝘥> to show a more detailed info \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘩𝘦𝘭𝘱 𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨: \n !𝘵𝘳𝘶𝘮𝘱 <𝘵𝘦𝘹𝘵> \n !𝘢𝘯𝘰𝘯𝘺𝘮𝘰𝘶𝘴 <𝘵𝘦𝘹𝘵> \n !𝘦𝘤𝘩𝘰 <𝘵𝘦𝘹𝘵> \n !𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n !𝘨𝘰𝘰𝘨𝘭𝘦 <𝘵𝘦𝘹𝘵> \n !𝘨𝘳𝘰𝘶𝘱𝘪𝘯𝘧𝘰 \n !𝘣𝘢𝘭𝘢𝘯𝘤𝘦 \n !𝘨𝘪𝘷𝘦 <𝘮𝘰𝘯𝘦𝘺> <@𝘶𝘴𝘦𝘳> \n !𝘱𝘪𝘯𝘨 \n !𝘥𝘢𝘪𝘭𝘺 \n !𝘯𝘪𝘤𝘬 <𝘯𝘢𝘮𝘦> \n !𝘺𝘵𝘮𝘱3 <𝘯𝘢𝘮𝘦> \n !𝘴𝘪𝘮 <𝘵𝘦𝘹𝘵> \n !𝘳𝘢𝘯𝘥𝘰𝘮𝘱𝘪𝘤 \n !𝘸𝘦𝘭𝘤𝘰𝘮𝘦 <𝘵𝘦𝘹𝘵> \n !𝘧𝘢𝘳𝘦𝘸𝘦𝘭𝘭 <𝘵𝘦𝘹𝘵> \n !𝘢𝘳 𝘭𝘪𝘴𝘵 \n !𝘢𝘳 𝘳𝘦𝘮𝘰𝘷𝘦 \n !𝘢𝘳 𝘢𝘥𝘥 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦> \n !𝘢𝘳 𝘦𝘹𝘢𝘤𝘵 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦> \n !𝘢𝘳 𝘴𝘸 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦>",
+{"commands":"type !𝘩𝘦𝘭𝘱 <𝘤𝘰𝘮𝘮𝘢𝘯𝘥> to show a more detailed info \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘩𝘦𝘭𝘱 𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨: \n !𝘵𝘳𝘶𝘮𝘱 <𝘵𝘦𝘹𝘵> \n !𝘢𝘯𝘰𝘯𝘺𝘮𝘰𝘶𝘴 <𝘵𝘦𝘹𝘵> \n !𝘦𝘤𝘩𝘰 <𝘵𝘦𝘹𝘵> \n !𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦 \n !𝘨𝘰𝘰𝘨𝘭𝘦 <𝘵𝘦𝘹𝘵> \n !𝘨𝘳𝘰𝘶𝘱𝘪𝘯𝘧𝘰 \n !𝘣𝘢𝘭𝘢𝘯𝘤𝘦 \n !𝘨𝘪𝘷𝘦 <𝘮𝘰𝘯𝘦𝘺> <@𝘶𝘴𝘦𝘳> \n !𝘱𝘪𝘯𝘨 \n !𝘥𝘢𝘪𝘭𝘺 \n !𝘯𝘪𝘤𝘬 <𝘯𝘢𝘮𝘦> \n !𝘺𝘵𝘮𝘱3 <𝘯𝘢𝘮𝘦> \n !𝘴𝘪𝘮𝘴𝘪𝘮𝘪 \n !𝘳𝘢𝘯𝘥𝘰𝘮𝘱𝘪𝘤 \n !𝘸𝘦𝘭𝘤𝘰𝘮𝘦 <𝘵𝘦𝘹𝘵> \n !𝘧𝘢𝘳𝘦𝘸𝘦𝘭𝘭 <𝘵𝘦𝘹𝘵> \n !𝘴𝘩𝘪𝘱 <@𝘯𝘢𝘮𝘦> \n !𝘢𝘳 𝘭𝘪𝘴𝘵 \n !𝘢𝘳 𝘳𝘦𝘮𝘰𝘷𝘦 \n !𝘢𝘳 𝘢𝘥𝘥 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦> \n !𝘢𝘳 𝘦𝘹𝘢𝘤𝘵 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦> \n !𝘢𝘳 𝘴𝘸 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦>",
 "trump":"donald trump will tweet the inputted text \n \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘵𝘸𝘵 𝘪 𝘮𝘪𝘴𝘴 𝘶",
 "anonymous":"will send a message to a groupchat and the sender will be anonymous. if there is only one mutual groupchat, the message will be sent there.  \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚 \n!𝘢𝘯𝘰𝘯𝘺𝘮𝘰𝘶𝘴 𝘪 𝘮𝘪𝘴𝘴 𝘶",
 "echo":"will repeat the inputted text\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘦𝘤𝘩𝘰 𝘪 𝘮𝘪𝘴𝘴 𝘺𝘰𝘶",
-"roulette":"𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨: \n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 <𝘮𝘰𝘯𝘦𝘺> <𝘱𝘭𝘢𝘤𝘦>\n!𝘳𝘰𝘭𝘭\n!𝘵𝘢𝘣𝘭𝘦\n\n𝙋𝙖𝙮𝙤𝙪𝙩 𝙈𝙪𝙡𝙩𝙞𝙥𝙡𝙞𝙚𝙧𝙨:\n[x36] single number\n[x3] dozens (1-12, 13-24, 25-36)\n[x3] columns (1st, 2nd, 3rd)\n[x2] halves (1-18, 19-36)\n[x2] odd/even\n[x2] colors (red, black)\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚𝙨:\n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 150 1-18\n!𝘳𝘰𝘭𝘭\n\n!𝘳𝘰𝘶𝘭𝘦𝘵𝘵𝘦\n!𝘣𝘦𝘵 1000 1𝘴𝘵\n!𝘳𝘰𝘭𝘭\n\n𝙏𝙖𝙗𝙡𝙚:",
+"roulette":"𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨:\n!𝘣𝘦𝘵 <𝘮𝘰𝘯𝘦𝘺> <𝘱𝘭𝘢𝘤𝘦>\n!𝘳𝘰𝘭𝘭\n!𝘵𝘢𝘣𝘭𝘦\n\n𝙋𝙧𝙞𝙯𝙚 𝙈𝙪𝙡𝙩𝙞𝙥𝙡𝙞𝙚𝙧𝙨:\n[x36] single number\n[x3] dozens (1-12, 13-24, 25-36)\n[x3] columns (1st, 2nd, 3rd)\n[x2] halves (1-18, 19-36)\n[x2] odd/even\n[x2] colors (red, black)\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚𝙨:\n!𝘣𝘦𝘵 150 1-18\n!𝘳𝘰𝘭𝘭\n\n!𝘣𝘦𝘵 1000 1𝘴𝘵\n!𝘳𝘰𝘭𝘭\n\n𝙏𝙖𝙗𝙡𝙚:","bet":"","table":"","roll":"",
 "google":"will search anything. this command is experimental and might not work properly.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘰𝘰𝘨𝘭𝘦 𝘸𝘩𝘰 𝘪𝘴 𝘴𝘵𝘦𝘱𝘩𝘦𝘯 𝘩𝘢𝘸𝘬𝘪𝘯𝘨",
-"groupinfo":"even a 5 year old would know what is this for and how to use this command.",
+"groupinfo":"even a 5 year old knows what command this is",
 "balance":"shows your current money. users who are new will receive 10 coins.",
-"give":"will give money from your balance to another user. if mentioning doesn't work, try using the user's profile id \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨",
+"give":"will give money from your balance to another user. if mentioning doesn't work, try using the user's profile id \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨","bal":"will give money from your balance to another user. if mentioning doesn't work, try using the user's profile id \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨",
 "ping":"detects the server latency",
 "daily":"collects the free daily coins ranging from 50-100 coins",
 "nick":"changes your nickname.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘯𝘪𝘤𝘬 𝘱𝘢𝘯𝘻𝘦𝘳",
 "ytmp3":"downloads audio from youtube. the link will be sent where you can download it, but it will be long as i only use free google streaming site.\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚\n!𝘺𝘵𝘮𝘱3 𝘪 𝘭𝘰𝘷𝘦 𝘺𝘰𝘶 𝘴𝘰 - 𝘵𝘩𝘦 𝘸𝘢𝘭𝘵𝘦𝘳𝘴",
-"sim":"wanna chat with me?\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘴𝘪𝘮 𝘩𝘪,𝘩𝘰𝘸 𝘢𝘳𝘦 𝘺𝘰𝘶?",
+"simsimi":"Enables chat mode. to Disable, type !𝘴𝘪𝘮𝘴𝘪𝘮𝘪 again. \n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘴𝘪𝘮𝘴𝘪𝘮𝘪",
 "randompic":"sends a random picture from various users all over the internet reply to the picture with !𝘴𝘰𝘶𝘳𝘤𝘦 to get the picture source . WARNING: the command is not filtered for inappripriate images. i will not be responsible for your actions.",
 "welcome": "sends a welcome message to the group when a user is added. use !𝘸𝘦𝘭𝘤𝘰𝘮𝘦 to turn off and !𝘸𝘦𝘭𝘤𝘰𝘮𝘦 <𝘵𝘦𝘹𝘵> to turn on.\n\n𝙑𝙖𝙧𝙞𝙖𝙗𝙡𝙚𝙨:\n{𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦} - user's name\n{𝘧𝘪𝘳𝘴𝘵𝘯𝘢𝘮𝘦} - user's first name\n{𝘶𝘴𝘦𝘳𝘤𝘰𝘶𝘯𝘵} - how many members are in the group including the added user\n{𝘮𝘦𝘮𝘣𝘦𝘳𝘤𝘰𝘶𝘯𝘵} - same as usercount, but uses ordinal(1st,2nd,3rd..)\n{𝘨𝘳𝘰𝘶𝘱𝘯𝘢𝘮𝘦} - the name of the group\n\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘸𝘦𝘭𝘤𝘰𝘮𝘦 𝘞𝘦𝘭𝘤𝘰𝘮𝘦 𝘵𝘰 {𝘨𝘳𝘰𝘶𝘱𝘯𝘢𝘮𝘦} {𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦}! 𝘺𝘰𝘶'𝘳𝘦 𝘵𝘩𝘦 {𝘮𝘦𝘮𝘣𝘦𝘳𝘤𝘰𝘶𝘯𝘵} 𝘮𝘦𝘮𝘣𝘦𝘳 𝘵𝘰 𝘫𝘰𝘪𝘯",
 "farewell": "sends a farewell message to the group when a user has left. use !𝘧𝘢𝘳𝘦𝘸𝘦𝘭𝘭 to turn off and !𝘧𝘢𝘳𝘦𝘸𝘦𝘭𝘭 <𝘵𝘦𝘹𝘵> to turn on.\n\n𝙑𝙖𝙧𝙞𝙖𝙗𝙡𝙚𝙨:\n{𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦} - user's name\n{𝘧𝘪𝘳𝘴𝘵𝘯𝘢𝘮𝘦} - user's first name\n{𝘶𝘴𝘦𝘳𝘤𝘰𝘶𝘯𝘵} - how many members are in the group after the user has left\n{𝘮𝘦𝘮𝘣𝘦𝘳𝘤𝘰𝘶𝘯𝘵} - same as usercount, but uses ordinal(1st,2nd,3rd..)\n{𝘨𝘳𝘰𝘶𝘱𝘯𝘢𝘮𝘦} - the name of the group\n\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘧𝘢𝘳𝘦𝘸𝘦𝘭𝘭 𝘣𝘺𝘦 {𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦}, 𝘵𝘩𝘦 𝘨𝘳𝘰𝘶𝘱 𝘩𝘢𝘴 𝘯𝘰𝘸 𝘰𝘯𝘭𝘺 {𝘶𝘴𝘦𝘳𝘤𝘰𝘶𝘯𝘵} 𝘮𝘦𝘮𝘣𝘦𝘳𝘴 𝘭𝘦𝘧𝘵",
-"ar list": "!𝘢𝘳 𝘭𝘪𝘴𝘵\nshows the list of auto responses. use !𝘩𝘦𝘭𝘱 𝘢𝘳 if you want more info on each ar",
+"ar list": "!𝘢𝘳 𝘭𝘪𝘴𝘵\nshows the list of auto responses.",
 "ar remove": "!𝘢𝘳 𝘳𝘦𝘮𝘰𝘷𝘦\nremoves the autoresponse from the list by its number. use !𝘢𝘳 𝘭𝘪𝘴𝘵 to show the numbers of each auto response",
 "ar add": "!𝘢𝘳 𝘢𝘥𝘥 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦>\nadds a trigger that when someones says a similar message, i will respond with the given response. the response will still be triggered when there is a small typo such as when someone said 𝘩𝘰𝘸 𝘢𝘳𝘦 𝘺𝘰𝘺 instead of 𝘩𝘰𝘸 𝘢𝘳𝘦 𝘺𝘰𝘶\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n!𝘢𝘳 𝘢𝘥𝘥 𝘩𝘪++𝘩𝘦𝘭𝘭𝘰",
 "ar exact": "!𝘢𝘳 𝘦𝘹𝘢𝘤𝘵 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦>\nsame as !𝘢𝘳 𝘢𝘥𝘥 but the message must be exactly as the trigger and a typo will not trigger the response. punctuations and capitalizations are excepted",
 "ar sw": "!𝘢𝘳 𝘴𝘸 <𝘵𝘳𝘪𝘨𝘨𝘦𝘳>++<𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘦>\ntriggers when a message starts with the given trigger\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚\n!𝘢𝘳 𝘴𝘸 𝘩𝘰𝘸 𝘥𝘰 𝘪++𝘶𝘴𝘦 𝘨𝘰𝘰𝘨𝘭𝘦!",
-"ar": "note: auto response cannot be more than 2000 characters in length\n"
-
+"ar": "note: auto response cannot be more than 2000 characters in length\n",
+"next": "searches again",
+"ship":"Finds a match for a user in this groupchat and tells how fit they are. \n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚\n!𝘴𝘩𝘪𝘱 @𝘔𝘢𝘳𝘤𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨\n\nYou can also just use !𝘴𝘩𝘪𝘱 to match 2 random users ",
+"countlog":"","kaching":"","botdata":"","savedata":"","threadID":""
 
 
 }

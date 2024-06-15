@@ -1,25 +1,23 @@
-﻿
-const login = require("facebook-chat-api")
+﻿const login = require("facebook-chat-api")
 const fs = require("fs")
-var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")) }
-const puppeteer = require('puppeteer');
-
+var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")).cookies }
 const dotnv = require("dotenv").config()
 const emoji = require("node-emoji")
 const twitterpost = require("./twt/twitterpost")
 const tts = require("google-tts-api")
 const roulette = require("./roulette/roulette.js")
-const google = require("googlethis")
 const axios = require("axios")
+const cheerio = require("cheerio")
+const unirest = require("unirest")
 const request = require("request")
 const cb = require("cleverbot-free")
-const ytdl = require("play-dl") //ytdl-core is banned
-const { youtube } = require("scrape-youtube")
+const ytdl = require("ytdl-core")
+const Scraper = require('@yimura/scraper').default;
+const ytsearch = new Scraper();
 const unfluff = require("unfluff")
 const similarity = require("string-similarity")
 const response = JSON.parse(fs.readFileSync("response.json", "utf8"))
-
-var cache = { 1: { name: "a" } }
+var cache = { 1: {} }
 var places = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "1-12", "13-24", "25-36", "1-18", "even", "red", "black", "odd", "19-36", "1st", "2nd", "3rd"]
 var alphabet = "abcdefghijklmnopqrstuvwxyz123456789"
 var leaderboard = { "money": {}, "daily": {} }
@@ -29,6 +27,11 @@ var mp3 = {}
 var anons = {}
 var sources = {}
 
+var botname = "KAIZER(BOT)"
+
+
+var ua = ["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.3","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.3","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.3"]
+var UserAgent = ua[Math.round(Math.random()*ua.length)]
 
 //THE BOT WILL SEND THE DATA TO A USER, MAKING IT A STORAGE
 var storage = 100076751732497 //panzer postblocked pa rin
@@ -61,25 +64,13 @@ async function countmsg() {
 var quotelist
 (async () => {
 	axios.get("https://type.fit/api/quotes").then(resp=>{quotelist=resp.data})
-	if(true){
-		const browser = await puppeteer.launch({headless:true, args: ['--no-sandbox']});
-		const page = await browser.newPage();
-		await page.goto('https://www.facebook.com/login.php');
-		await page.type('#email', process.env.EMAIL);
-		await page.type('#pass', process.env.PASS);
-		await page.click('#loginbutton');
-		await page.waitForNavigation();
-		credential = await page.cookies();
-		console.log(JSON.stringify(credential))
-		fs.writeFileSync("./appstate.json",JSON.stringify(credential))
-		credential = {appState:JSON.parse(JSON.stringify(credential).replaceAll("name","key","utf-8"))}
-		await browser.close();
-	}
+	
 	login(credential, (err, api) => {
-
+		if(err){return console.log(err)}
+		console.log("logged in success")
 		//TRIES TO RETRIEVE DATA WHEN BOT STARTS
 		api.getThreadHistory(storage, 1, undefined, (err, res) => {
-			console.log("success retrieve")
+			if(err){return console.log(err)}
 			if (res[0].body.split("\n\n")[0] == "BOTDATA") {
 				leaderboard = JSON.parse(res[0].body.split("\n\n")[2])
 				threads = JSON.parse(res[0].body.split("\n\n")[1])
@@ -90,7 +81,7 @@ var quotelist
 		//SAVE DATA PER TIME
 		saveData()
 		async function saveData() {
-			await new Promise(r => setTimeout(r, 300000 + (Math.random() * 100000)))
+			await new Promise(r => setTimeout(r, 300000 + (Math.random() * 100000))) //sends data to storage every 300seconds+random of 0-100 seconds. this prevents spam detection from fb
 			var attachments = []
 			api.sendMessage({ body: "BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), attachment: attachments }, storage)
 			saveData()
@@ -99,15 +90,17 @@ var quotelist
 	
 		//SET UP A THREAD
 		function newThread(threadID, isGroup) {
-			api.changeNickname("(BOT) Ferdinand Marcos", threadID, api.getCurrentUserID())
+			api.changeNickname(botname, threadID, api.getCurrentUserID())
 			api.sendMessage("Hi! type !𝘤𝘰𝘮𝘮𝘢𝘯𝘥𝘴 to see commands", threadID)
+			api.sendMessage("donate na kau gcash ko pls, wala na ko makain huhu\n09270360090",threadID)
 			rouletteInfo[threadID] = { "timestamp": -1, "IsRolling": false, "msg": "Rolling.\n\n" }
-			threads[threadID] = { "isGroup": (isGroup ? true : false), "welcome": "", "farewell": "", "ar": {} }
+			threads[threadID] = { "isGroup": (isGroup ? true : false), "welcome": "", "farewell": "", "ar": {},"cb":-1,"cb_context":[] }
 		}
 	
 			//PROCESS REQUESTED EVENTS
 			var eventTraffic = []
 			async function requestSend(eventType, message, threadID, callback, messageID, senderID) {
+				console.log(eventTraffic)
 				if (eventTraffic.length == 0) {
 					eventTraffic.push([eventType, message, threadID])
 					loop()
@@ -121,7 +114,7 @@ var quotelist
 								if (err) api.sendMessage("nickname too long", event.threadID)
 							})
 						}
-						await new Promise(resolve => setTimeout(resolve, 900))
+						await new Promise(resolve => setTimeout(resolve, 1500))
 						eventTraffic.shift()
 					}
 				}
@@ -131,10 +124,12 @@ var quotelist
 			//LISTEN FOR MESSAGE REQUEST
 			function listenRequest(type) {
 				api.getThreadList(1, null, type, (err, list) => {
+					
+					if(!list){return}
 					for (let i = 0; i < list.length; i++) {
 						api.handleMessageRequest(list[i].threadID, true, (err) => {
-							newThread(list[i].threadID, list[i].isGroup)
-							console.log("accepted message request")
+						newThread(list[i].threadID, list[i].isGroup)
+						console.log("accepted message request")
 						})
 					}
 				})
@@ -165,22 +160,22 @@ var quotelist
 			}
 			api.setOptions({ listenEvents: true })
 			api.listenMqtt((err, event) => {
-	
+				if(err){return console.log(err)}
 				async function count(threadID) {
 					while (true) {
 						await new Promise(resolve => setTimeout(resolve, 1000));
 						rouletteInfo[threadID].timestamp += 1
 						if (rouletteInfo[threadID].timestamp > 180) {
 							rouletteInfo[threadID].timestamp = -1
-							return requestSend("message", "roulette has been turned off since its inactive", threadID)
+							return requestSend("message", "roulette has been turned off due to inactivity.", threadID)
 						}
 					}
 				}
-	
-				switch (event.type) {
+
+				switch (event.type) {	
 					case "message":
 					case "message_reply":
-	
+						
 						if (!(event.threadID in threads)) {
 							return newThread(event.threadID)
 						}
@@ -204,7 +199,7 @@ var quotelist
 						}
 	
 						//MY COMMANDS
-						if (event.body.startsWith() == "!kaching "&&!isNaN(parseInt(event.body.split(" ")[1]))) { leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
+						if (event.body.startsWith() == "!kaching "){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
 						if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
 						if (event.body == "!savedata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), storage) }
 						if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
@@ -212,24 +207,46 @@ var quotelist
 	
 	
 						//MAIN
-	
-						if ((similarity.compareTwoStrings("!commands", event.body.split(" ")[0].toLowerCase()) > 0.85) || (similarity.compareTwoStrings("!help", event.body.split(" ")[0].toLowerCase()))) {
-							requestSend("message", response.commands, event.threadID, async (err, info) => {
+
+						//!HELP OR !COMMANDS
+						if ((similarity.compareTwoStrings("!commands", event.body.toLowerCase()) > 0.90 || event.body.toLowerCase()=="!help")) {
+							return requestSend("message", response["commands"], event.threadID, async (err, info) => {
 								await new Promise(r => setTimeout(r, 1200000))
 								api.unsendMessage(info.messageID)
 							})
 						}
+						//!HELP [COMMAND] OR !HELP AR
 						if (event.body.toLowerCase().startsWith("!help ")) {
-							var command = event.body.substr(6,event.body.length)
-							if (event.body.toLowerCase() == "!help ar") {
-								return requestSend("message", response[command] + "\n" + response["ar list"] + "\n\n"+response["ar remove"]+"\n\n"+response["ar add"]+"\n\n"+response["ar exact"]+"\n\n"+response["ar sw"],event.threadID)
-							}
-							if (Object.keys(response).includes(command)) {
-								requestSend("message", { body: response[command], attachment: command == "roulette" ? fs.createReadStream("./roulette/img.jpg") : null }, event.threadID)
+							var command = event.body.substr(6,event.body.length).toLowerCase()
+							if (event.body.toLowerCase().startsWith("!help ar")) {
+								return requestSend("message", response["ar list"] + "\n\n"+response["ar remove"]+"\n\n"+response["ar add"]+"\n\n"+response["ar exact"]+"\n\n"+response["ar sw"],event.threadID)
 							} else {
-								return requestSend("message", "that command doesn't exist", event.threadID)
+								if(!response[command]){ return requestSend("message","That Command doesn't exist. Make sure there are no Typos",event.threadID) } else { var msg = response[command]; return requestSend("message",{body:msg, attachment: command == "roulette" ? fs.createReadStream("./roulette/img.jpg") : null}, event.threadID) }
 							}
 						}
+						//!COMMAND TYPO
+						if(event.body.toLowerCase().startsWith("!")){
+							var command = event.body.split(" ")[0].toLowerCase()
+							if(event.body.toLowerCase().startsWith("!ar")){command = event.body.split(" ")[0]+" "+event.body.split(" ")[1]}
+							var commands = []
+							for(i in Object.keys(response)){
+								commands.push(Object.keys(response)[i])
+							}
+							
+							if( (!commands.includes(command.substr(1,event.body.length))) ){
+
+
+								for(i in commands){
+									console.log(command,commands[i])
+									if((similarity.compareTwoStrings(commands[i], command.toLowerCase()) > 0.65)){
+										return requestSend("message", "That command doesn't exist. Did you mean \n!"+Object.keys(response)[i]+"?", event.threadID)
+									}
+									console.log("finding")
+									if(i==commands.length-1){ return requestSend("message", "That command doesn't exist :/", event.threadID) }
+								}
+							}						
+						}
+
 						//TWITTER COMMAND
 						if (event.body.toLowerCase().startsWith("!trump ")) {
 							if (event.body.length > 126) { return requestSend("message", "text must be less than 126 characters", event.threadID, (a, b) => { }, event.messageID) };
@@ -284,7 +301,7 @@ var quotelist
 						}
 	
 						//ANONYMOUS MESSAGE
-						if (event.body.toLowerCase().startsWith("!anonymous ")) {
+						if (event.body.toLowerCase().startsWith("!anonymous ")||event.body.toLowerCase().startsWith("!anon ")) {
 							if (event.isGroup) { return requestSend("message", "that command only works on private message", event.threadID) };
 	
 							var mutualgroups = []
@@ -294,14 +311,14 @@ var quotelist
 								}
 								switch (true) {
 									case (mutualgroups.length == 0):
-										return requestSend("message", "we have no mutual groups", event.threadID)
+										return requestSend("message", "You need to add me to a Groupchat first.", event.threadID)
 									case (mutualgroups.length == 1):
 										requestSend("message", event.body.substr(10, event.body.length - 1).concat("\n\n-anon"), mutualgroups[0].threadID); return
 									case (mutualgroups.length > 1):
 										anons[event.threadID] = [mutualgroups, event.body.substr(10, event.body.length)]
-										var msg = "type the number of the group chat where the message will be sent.\nto exit the command, type 0 \n\n"
+										var msg = "type the number of the Groupchat where the message will be sent.\nto exit the command, type 0 \n\n"
 										for (let i = 0; i < mutualgroups.length; i++) {
-											msg = msg.concat(i + 1, ". ", !mutualgroups[i].name ? "[no name]" : mutualgroups[i].name, "\n");
+											msg = msg.concat(i + 1, "||", !mutualgroups[i].name ? "[no name]" : mutualgroups[i].name, "\n");
 										}
 										requestSend("message", msg, event.threadID)
 								}
@@ -342,7 +359,7 @@ var quotelist
 	
 						//GIVE MONEY COMMAND
 						if (event.body.toLowerCase().startsWith("!give ")) {
-							if (!event.isGroup) { return requestSend("that command only works on groupchats") }
+							if (!event.isGroup) { return requestSend("message","that command only works on groupchats",event.threadID,null,event.messageID) }
 							var money = parseInt(event.body.split(" ")[1])
 							if (isNaN(money)) { return requestSend("message", "Place how much money you want to give.\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n !𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨", event.threadID) }
 							var mentioned;
@@ -421,12 +438,12 @@ var quotelist
 							leaderboard.money[event.senderID] -= splitted[1];
 							if (!(event.senderID in cache)) {
 								api.getUserInfo(event.senderID, (err, ret) => {
-									cache[event.senderID] = ret[event.senderID].firstName; SEND()
+									cache[event.senderID] = ret[event.senderID]; SEND()
 									if (err) api.sendMessage(err, event.threadID);
 								})
 							} else { SEND() }
 							function SEND() {
-								rouletteInfo[event.threadID].msg = rouletteInfo[event.threadID].msg.concat(cache[event.senderID], "\nbet: ", splitted[1], "\nplace: ", place, "\n \n")
+								rouletteInfo[event.threadID].msg = rouletteInfo[event.threadID].msg.concat(cache[event.senderID].firstName, "\nbet: ", splitted[1], "\nplace: ", place, "\n \n")
 							}
 						}
 	
@@ -455,62 +472,97 @@ var quotelist
 	
 						//GOOGLE COMMAND
 						if (event.body.toLowerCase().startsWith("!google ") || event.body.toLowerCase() == "!next") {
+							console.log("command called")
 							var query = event.body.substr(8, event.body.length - 1)
+
 							if (event.body.toLowerCase() == "!next") {
-								if (googlesearch[event.threadID]) { query = googlesearch[event.threadID].query; googlesearch[event.threadID].page += 1 } else { return }
+								if (googlesearch[event.threadID]) { googlesearch[event.threadID].page += 1 } else { return }
+								return search(googlesearch[event.threadID].page)					
 							} else {
-								if (googlesearch[event.threadID]) { googlesearch[event.threadID].page = 0; googlesearch[event.threadID].query = query } else { googlesearch[event.threadID] = { "page": 0, "query": query } }
+								if (googlesearch[event.threadID]) { googlesearch[event.threadID].page = 0; googlesearch[event.threadID].query = query; googlesearch[event.threadID].sites = [] } else { googlesearch[event.threadID] = { "page": 0, "query": query, "sites": [] } }
 							}
-	
-							google.search(query).then(res => {
-								if (res.results.length - 1 < googlesearch[event.threadID].page) { return requestSend("message", "No content found. try using other words", event.threadID) }
-	
-								axios.get(res.results[googlesearch[event.threadID].page].url).then(data => {
-									res = unfluff(data.data)
-									requestSend("message", res.title.concat("\n\n", res.text), event.threadID, () => { if (googlesearch[event.threadID].page == 0) api.sendMessage("to see more, type !𝘯𝘦𝘹𝘵", event.threadID) })
-	
-	
-								}).catch(err => { return api.sendMessage("Error: Bots are sometimes blocked by strict websites and can't be accessed. try !𝘯𝘦𝘹𝘵 to check if the next website doesn't block bots. " + err.toString(), event.threadID) })
+
+							unirest.get("https://www.google.com/search?q="+query.replaceAll(" ","+")+"&gl=us&hl=en").headers({"User-Agent":UserAgent}).then(async(response) =>{
+								var $ = cheerio.load(response.body)
+								console.log("searching for "+"https://www.google.com/search?q="+query.replaceAll(" ","+")+"&gl=us&hl=en")
+								$(".yuRUbf a").each((i,value)=>{ googlesearch[event.threadID].sites.push($(value).attr("href")); console.log("WORKING") })
+								console.log("done")
+								if (!googlesearch[event.threadID].sites.length) { return requestSend("message","No content found. try using different words", event.threadID) }
+								search(googlesearch[event.threadID].page)			
 							})
-	
+
+							function search(page){
+								axios.get(googlesearch[event.threadID].sites[page],{"User-Agent":UserAgent}).then(async(resp)=>{
+									console.log("site used is",googlesearch[event.threadID].sites[page])
+									var res = unfluff(resp.data)
+									requestSend("message", res.text, event.threadID, () => { api.sendMessage("to see more, type !𝘯𝘦𝘹𝘵", event.threadID)})
+								})
+								.catch(err => { return api.sendMessage("Error: Bots are sometimes blocked by strict websites and can't be accessed. try !𝘯𝘦𝘹𝘵 to check if the next website doesn't block bots. \n\n" + err.toString(), event.threadID) })
+							}
+						
 	
 						}
 	
 						//CLEVERBOT
-						if (event.body.toLowerCase().startsWith("!sim ")) {
-							cb(event.body.substr(5, event.body.length - 1)).then(resp => {
-								requestSend("message", resp, event.threadID, () => { }, event.messageID)
-							}).catch(err => { api.sendMessage(err, event.threadID) })
+						if ((event.body.toLowerCase()=="!simsimi")||threads[event.threadID].cb>-1) {
+							if(event.body.toLowerCase().startsWith("!simsimi")==false){
+
+							try{
+								cb(event.body,threads[event.threadID].cb_context).then(resp => {
+									requestSend("message", resp.toLowerCase().replaceAll("."," "), event.threadID, () => { }, event.messageID)
+									threads[event.threadID].cb_context.push(event.body)
+									threads[event.threadID].cb_context.push(resp)
+								}).catch(err=>{requestSend("message",err, event.threadID)})
+							} catch(err){ requestSend("message",err, event.threadID) }
+							}
+
+							if ((event.body.toLowerCase()=="!simsimi")&&threads[event.threadID].cb>-1){
+								threads[event.threadID].cb=-1
+								threads[event.threadID].cb_context = []
+								return requestSend("message", "Command turned off.", event.threadID);
+							}
+
+							console.log(threads[event.threadID].cb)
+							if(threads[event.threadID].cb == -1){
+								requestSend("message", "Command Enabled. Say hello! to Simsimi.", event.threadID)
+								threads[event.threadID].cb = 60
+								async function count(){
+									while(threads[event.threadID].cb>-1){
+										threads[event.threadID].cb-=1
+										console.log(threads[event.threadID].cb)
+										await new Promise(resolve => setTimeout(resolve, 1000));
+										if(threads[event.threadID].cb==1){return requestSend("message", "Simsimi has been turned off due to inactivity.", event.threadID)}
+									}
+								}
+								count()
+							} else {
+								threads[event.threadID].cb=60
+							}
+
 						}
 	
 						//MP3 DOWNLOADER
 						if (event.body.toLowerCase().startsWith("!ytmp3 ")) {
-							youtube.search(event.body.substr(6, event.body.length)).then((res) => {
+							ytsearch.search(event.body.substr(6, event.body.length)).then((res) => {
 								if (res.videos.length == 0) { return requestSend("message", "no videos found. try using other keywords", event.threadID) }
 								var msg = ""
-								for (i = 0; i < 5; i++) {
-									var mins = (Math.floor(res.videos[i].duration / 60) == 0 ? 0 : Math.floor(res.videos[i].duration / 60)).toString()
-									var sec = (res.videos[i].duration - mins * 60)
-									sec = sec < 10 ? "0" + sec : sec
-									msg = msg.concat(i + 1, ".", res.videos[i].title, "(", mins, ":", sec, ")", "\n", res.videos[i].channel.name, "\n\n")
+								for (i = 0;(res.videos.length>=5 ? i<5 : i < res.videos.length); i++) {
+									msg = msg.concat(i + 1, ".", res.videos[i].title, "(",res.videos[i].duration_raw,")", "\nby: ", res.videos[i].channel.name, "\n\n")
 								}
 								requestSend("message", "type the number of the audio you want to download.\nto abort command, type 0".concat("\n\n", msg), event.threadID)
 								mp3[event.threadID] = res.videos
 							});
 						}
 						if (!isNaN(parseInt(event.body)) && Object.keys(mp3).includes(event.threadID)) {
-							if (event.body > mp3[event.threadID].length || event.body < 1 || event.body > 5) { return requestSend("message", "command aborted", event.threadID); delete mp3[event.threadID]; }
-							var bitrates = []
-							ytdl.video_info((mp3[event.threadID][parseInt(event.body) - 1]).id).then(info => {
-								for (let i = 0; i < info.format.length; i++) {
-									if (info.format[i].mimeType.split(" ")[0] == "audio/mp4;" || info.format[i].mimeType.split(" ")[0] == "audio/webm;") { bitrates.push(info.format[i].bitrate) }
-								}
-								if (!bitrates.length > 0) { return requestSend("message", "either the link doesn't work or the video is secured and cannot be downloaded", event.threadID) }
-								bitrates = Math.max.apply(Math, bitrates)
-								for (let i = 0; i < info.format.length; i++) {
-									if (info.format[i].bitrate == bitrates) {
-										return requestSend("message", "Audio Quality: ".concat(info.format[i].audioQuality.split("_")[2], "\n\n", info.format[i].url), event.threadID);
-									}
+							if (event.body > mp3[event.threadID].length || event.body < 1 || event.body > 5) { delete mp3[event.threadID]; return requestSend("message", "command aborted", event.threadID) }
+							ytdl.getInfo((mp3[event.threadID][parseInt(event.body) - 1]).id).then(info => {
+								console.log(info.formats[0].id)
+								try{
+									let audio = ytdl.chooseFormat(info.formats,{quality:"highestaudio"})
+									return requestSend("message", "Audio Quality: ".concat(audio.audioQuality.split("_")[2].toLowerCase(), "\n\n", audio.url), event.threadID);
+								} catch(err){
+									console.log(err)
+									return requestSend("message", "either the link doesn't work or the video is premium and cannot be downloaded. You can try choosing other similar youtube videos.", event.threadID)
 								}
 							})
 							return delete mp3[event.threadID]
@@ -622,6 +674,85 @@ var quotelist
 							var num = Math.round(Math.random()*quotelist.length)
 							return requestSend("message",quotelist[num].text.concat("\n\n-",quotelist[num].author),event.threadID)
 						}
+
+
+						if(event.body.toLowerCase().startsWith("!ship")){
+							api.getThreadInfo(event.threadID,(err,res)=>{
+								if(!res){return}
+								var id0 = res.participantIDs[Math.round(Math.random()*(res.participantIDs.length-1))]
+
+								if(event.body.split(" ").length>1){
+									if(Object.keys(event.mentions).length>0){
+										id0 = Object.keys(event.mentions)[0]
+									} else {
+										api.getUserID(event.body.substr(6,event.body.length),(err,ret)=>{
+											if(!ret){ _(); return id0 = api.getCurrentUserID()  }
+											if(res.participantIDs.includes[ret[0].userID]){id0=ret[0].userID; _()}
+											else {_(); return requestSend("message","You can only ship people added in this Groupchat.",event.threadID)}
+										})
+									}
+								} else {_()}
+
+								async function _(){
+									res.participantIDs.splice(res.participantIDs.indexOf(id0),1)
+									var id1 = res.participantIDs[Math.round(Math.random()*(res.participantIDs.length-1))]
+
+									api.getUserInfo([id0],(err,info)=>{
+
+										api.getUserInfo([id1],(err,info1)=>{
+											if(!info1){return}
+											var percent = Math.round(Math.random()*100)
+											var msg = "♡𝐌𝐀𝐓𝐂𝐇𝐌𝐀𝐊𝐈𝐍𝐆♡\n\n🔻"+"1"+"\n🔺"+"2"+"\n\n"
+											var msg2 = "🔀"+"newname"+"bar"+"percent"+"% "+ (percent == 100 ? "PERFECT!💞" : ( percent>=70 ? "Great😁" : (percent>=40&&percent<70 ? "Not bad😐" : "Bad🤮") ))
+											bar = ""; 
+											bar += ("█".repeat(Math.floor(percent/10))); 
+											bar += ("▒".repeat((10-bar.length)));
+											var name1;
+											if(id0==api.getCurrentUserID()){
+												name1 = {"firstName":event.body.split(" ")[1] ,"name": event.body[6].toUpperCase()+event.body.substr(7,event.body.length).toLowerCase()}
+											} else {name1 = info[Object.keys(info)[0]]}
+											var name2 = info1[Object.keys(info1)[0]]
+											msg2 = msg2.replace("newname", name1.firstName.substr(0,Math.ceil(name1.firstName.length/2)) +  name2.firstName.substr(Math.ceil(name2.firstName.length/2),name2.firstName.length).toLowerCase() )
+											requestSend("message",{body:msg.replace("1",name1.name).replace("2",name2.name), mentions: [ {tag:name1.name,id:id0} , {tag:name2.name,id:id1} ] },event.threadID,()=>{
+												api.sendMessage(msg2.replace("percent",percent).replace("bar","\n"+bar+" "),event.threadID)
+											})
+										})
+									})
+								}
+							})
+
+
+						}
+
+					/*	if(event.body.toLowerCase()=="!aaa"){
+							api.getThreadInfo(event.threadID,async(err,res)=>{
+								if(!res){return}
+								console.log("command called",res)
+								var cID1 = res.participantIDs[Math.round(Math.random()*(res.participantIDs.length-1))]
+								res.participantIDs.splice(res.participantIDs.indexOf(cID1),1)
+								var cID2 = res.participantIDs[Math.round(Math.random()*(res.participantIDs.length-1))]
+								console.log("debug1")
+								//var msg = "MATCHMAKING\n\n🔻"+"1"+"\n🔺"+"2"+"\n\n"+"bar"+"percent"+"%"
+								var name1 = ""; var name2 = "";
+								var count = 0
+								api.getUserInfo(cID1,(err,ret)=>{console.log("HAHAHAH");name1 = ret[Object.keys(ret)[0]].name; msg.replace("1",name1); console.log(ret[Object.keys(ret)[0]].name,"ETO PANGALAN",name1); count+=1})
+								api.getUserInfo(cID2,(err,ret)=>{name2 = ret[Object.keys(ret)[0]].name; msg.replace("2",name2); count+=1 })
+								while(count!=2){console.log("waiting")}
+
+								console.log(name1,"hhahaahah")
+								console.log("debug 2")
+								//var percent = Math.round(math.random()*100); msg.replace("percent",percent)
+							//	var bar = ""; msg.replace("bar",bar)
+								//bar =("█".repeat(Math.round(percent/10))); 
+								//bar =("▒".repeat((10-bar.length)));
+								console.log("Debug 3")
+								//api.sendMessage("hi",event.threadID)
+								console.log("Debu 4")
+								//console.log(name1,name2)
+								api.sendMessage({body:msg,mentions:[ {tag:name1,id:cID2},{tag:name2,id:cID2} ]},event.threadID)
+								
+							})
+						}*/
 	
 						break;
 	
