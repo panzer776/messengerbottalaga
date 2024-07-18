@@ -206,7 +206,7 @@ var quotelist
 
 			api.setOptions({ listenEvents: true, autoMarkDelivery:false })
 			var stop = api.listenMqtt((listenErr, event) => {
-				if(listenErr){console.error(listenErr.toString(),listenErr,"MQTT")}
+				if(listenErr||!event){console.error(listenErr.toString(),listenErr,"MQTT")}
 				if(listenErr&&listenErr.toString().includes("refused:")){
 					appStateGetter.main()
 				}
