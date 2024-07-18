@@ -2,6 +2,7 @@ const login = require("facebook-chat-api")
 const fs = require("fs")
 var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")) }
 const appStateGetter = require("./getAppstate.js")
+const keepAlive = require("./keep-alive.js")
 //const dotnv = require("dotenv").config()
 const emoji = require("node-emoji")
 const twitterpost = require("./twt/twitterpost")
