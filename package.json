@@ -1,7 +1,6 @@
 {
   "name": "messengerbottalaga",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/panzer776/messengerbottalaga/issues"
   },
-  "homepage": "https://github.com/panzer776/messengerbottalaga#readme"
+  "homepage": "https://github.com/panzer776/messengerbottalaga#readme",
+  "description": "",
+  "dependencies": {
+    "forever-monitor": "^3.0.3"
+  }
 }
