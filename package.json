@@ -20,8 +20,18 @@
     "url": "https://github.com/panzer776/messengerbottalaga/issues"
   },
   "homepage": "https://github.com/panzer776/messengerbottalaga#readme",
-  "description": "",
   "dependencies": {
-    "forever-monitor": "^3.0.3"
-  }
+    "@yimura/scraper": "^1.2.4",
+    "axios": "^1.7.2",
+    "facebook-chat-api": "^1.8.0",
+    "forever-monitor": "^3.0.3",
+    "google-tts-api": "^2.0.2",
+    "googlethis": "^1.8.0",
+    "he": "^1.2.0",
+    "node-emoji": "^2.1.3",
+    "request": "^2.88.2",
+    "string-similarity": "^4.0.4",
+    "ytdl-core": "^4.11.5"
+  },
+  "description": ""
 }
