@@ -1,0 +1,1802 @@
+[
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+        "correct_answer": "1000",
+        "incorrect_answers": [
+            "512",
+            "1024",
+            "500"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In computing, what does LAN stand for?",
+        "correct_answer": "Local Area Network",
+        "incorrect_answers": [
+            "Long Antenna Node",
+            "Light Access Node",
+            "Land Address Navigation"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does LTS stand for in the software market?",
+        "correct_answer": "Long Term Support",
+        "incorrect_answers": [
+            "Long Taco Service",
+            "Ludicrous Transfer Speed",
+            "Ludicrous Turbo Speed"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What is the code name for the mobile operating system Android 7.0?",
+        "correct_answer": "Nougat",
+        "incorrect_answers": [
+            "Ice Cream Sandwich",
+            "Jelly Bean",
+            "Marshmallow"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "The programming language &#039;Swift&#039; was created to replace what other programming language?",
+        "correct_answer": "Objective-C",
+        "incorrect_answers": [
+            "C#",
+            "Ruby",
+            "C++"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does CPU stand for?",
+        "correct_answer": "Central Processing Unit",
+        "incorrect_answers": [
+            "Central Process Unit",
+            "Computer Personal Unit",
+            "Central Processor Unit"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "This mobile OS held the largest market share in 2012.",
+        "correct_answer": "iOS",
+        "incorrect_answers": [
+            "Android",
+            "BlackBerry",
+            "Symbian"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "On Twitter, what was the original character limit for a Tweet?",
+        "correct_answer": "140",
+        "incorrect_answers": [
+            "120",
+            "160",
+            "100"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "How many values can a single byte represent?",
+        "correct_answer": "256",
+        "incorrect_answers": [
+            "8",
+            "1",
+            "1024"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does the &quot;MP&quot; stand for in MP3?",
+        "correct_answer": "Moving Picture",
+        "incorrect_answers": [
+            "Music Player",
+            "Multi Pass",
+            "Micro Point"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "If you were to code software in this language you&#039;d only be able to type 0&#039;s and 1&#039;s.",
+        "correct_answer": "Binary",
+        "incorrect_answers": [
+            "JavaScript",
+            "C++",
+            "Python"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "How long is an IPv6 address?",
+        "correct_answer": "128 bits",
+        "incorrect_answers": [
+            "32 bits",
+            "64 bits",
+            "128 bytes"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What is the most preferred image format used for logos in the Wikimedia database?",
+        "correct_answer": ".svg",
+        "incorrect_answers": [
+            ".png",
+            ".jpeg",
+            ".gif"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What is the domain name for the country Tuvalu?",
+        "correct_answer": ".tv",
+        "incorrect_answers": [
+            ".tu",
+            ".tt",
+            ".tl"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In web design, what does CSS stand for?",
+        "correct_answer": "Cascading Style Sheet",
+        "incorrect_answers": [
+            "Counter Strike: Source",
+            "Corrective Style Sheet",
+            "Computer Style Sheet"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does the Prt Sc button do?",
+        "correct_answer": "Captures what&#039;s on the screen and copies it to your clipboard",
+        "incorrect_answers": [
+            "Nothing",
+            "Saves a .png file of what&#039;s on the screen in your screenshots folder in photos",
+            "Closes all windows"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:",
+        "correct_answer": "HD Graphics 500",
+        "incorrect_answers": [
+            "HD Graphics 700 ",
+            "HD Graphics 600",
+            "HD Graphics 7000"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In computing, what does MIDI stand for?",
+        "correct_answer": "Musical Instrument Digital Interface",
+        "incorrect_answers": [
+            "Musical Interface of Digital Instruments",
+            "Modular Interface of Digital Instruments",
+            "Musical Instrument Data Interface"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "Which computer language would you associate Django framework with?",
+        "correct_answer": "Python",
+        "incorrect_answers": [
+            "C#",
+            "C++",
+            "Java"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "HTML is what type of language?",
+        "correct_answer": "Markup Language",
+        "incorrect_answers": [
+            "Macro Language",
+            "Programming Language",
+            "Scripting Language"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In &quot;Hexadecimal&quot;, what color would be displayed from the color code? &quot;#00FF00&quot;?",
+        "correct_answer": "Green",
+        "incorrect_answers": [
+            "Red",
+            "Blue",
+            "Yellow"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+        "correct_answer": "Final",
+        "incorrect_answers": [
+            "Static",
+            "Private",
+            "Public"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What amount of bits commonly equals one byte?",
+        "correct_answer": "8",
+        "incorrect_answers": [
+            "1",
+            "2",
+            "64"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "Which computer hardware device provides an interface for all other connected devices to communicate?",
+        "correct_answer": "Motherboard",
+        "incorrect_answers": [
+            "Central Processing Unit",
+            "Hard Disk Drive",
+            "Random Access Memory"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does GHz stand for?",
+        "correct_answer": "Gigahertz",
+        "incorrect_answers": [
+            "Gigahotz",
+            "Gigahetz",
+            "Gigahatz"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?",
+        "correct_answer": "Apple",
+        "incorrect_answers": [
+            "Microsoft",
+            "Atari",
+            "Commodore"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "Which programming language shares its name with an island in Indonesia?",
+        "correct_answer": "Java",
+        "incorrect_answers": [
+            "Python",
+            "C",
+            "Jakarta"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "What does the computer software acronym JVM stand for?",
+        "correct_answer": "Java Virtual Machine",
+        "incorrect_answers": [
+            "Java Vendor Machine",
+            "Java Visual Machine",
+            "Just Virtual Machine"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "When Gmail first launched, how much storage did it provide for your email?",
+        "correct_answer": "1GB",
+        "incorrect_answers": [
+            "512MB",
+            "5GB",
+            "Unlimited"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In any programming language, what is the most common way to iterate through an array?",
+        "correct_answer": "&#039;For&#039; loops",
+        "incorrect_answers": [
+            "&#039;If&#039; Statements",
+            "&#039;Do-while&#039; loops",
+            "&#039;While&#039; loops"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What album did Bon Iver release in 2016?",
+        "correct_answer": "22, A Million",
+        "incorrect_answers": [
+            "Bon Iver, Bon Iver",
+            "Blood Bank EP",
+            "For Emma, Forever Ago"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which brass instrument has the lowest pitch in an orchestra?",
+        "correct_answer": "Tuba",
+        "incorrect_answers": [
+            "Trumpet",
+            "Saxophone",
+            "Trombone"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Where does the Mac part of the name Fleetwood Mac come from?",
+        "correct_answer": "John McVie",
+        "incorrect_answers": [
+            "Christine McVie",
+            "Mac McAnally",
+            "David Tennant"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "In the  Rossini opera, what was the name of &#039;The Barber of Seville&#039;?",
+        "correct_answer": "Figaro",
+        "incorrect_answers": [
+            "Angelo",
+            "Fernando",
+            "Dave"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "In 2006, which band released their debut album &quot;A Fever You Can&#039;t Sweat Out&quot;?",
+        "correct_answer": "Panic! At the Disco",
+        "incorrect_answers": [
+            "Twenty One Pilots",
+            "My Chemical Romance",
+            "Fall Out Boy"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which band recorded the album &quot;Parallel Lines&quot;?",
+        "correct_answer": "Blondie",
+        "incorrect_answers": [
+            "Paramore",
+            "Coldplay",
+            "The Police"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "The band Muse released their first album, Showbiz, in what year?",
+        "correct_answer": "1999",
+        "incorrect_answers": [
+            "1998",
+            "2000",
+            "2001"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "&quot;Hallelujah&quot; is a song written by which Canadian recording artist?",
+        "correct_answer": "Leonard Cohen",
+        "incorrect_answers": [
+            "Kory Lefkowits",
+            "Ryan Letourneau ",
+            "Justin Bieber "
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What album did The Lumineers release in 2016?",
+        "correct_answer": "Cleopatra",
+        "incorrect_answers": [
+            "Winter",
+            "The Lumineers",
+            "Tracks From The Attic"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What Led Zeppelin album contains &quot;Stairway to Heaven&quot;?",
+        "correct_answer": "Led Zeppelin IV",
+        "incorrect_answers": [
+            "Houses of the Holy",
+            "Physical Graffiti",
+            "Led Zeppelin III"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Who had a 1969 top 5 hit with the song,  &#039;A Boy Named Sue&#039;?",
+        "correct_answer": "Johnny Cash",
+        "incorrect_answers": [
+            "Bob Dylan",
+            "Willie Nelson",
+            "Kris Kristofferson"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which one of these songs did the group &quot;Men At Work&quot; NOT make?",
+        "correct_answer": "Safety Dance",
+        "incorrect_answers": [
+            "Down Under",
+            "Who Can It Be Now?",
+            "It&#039;s a Mistake"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "The Red Hot Chili Pepper song &quot;Give It Away&quot; is from what album?",
+        "correct_answer": "Blood Sugar Sex Magik",
+        "incorrect_answers": [
+            "One Hot Minute",
+            "By the Way",
+            "Stadium Arcadium"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "The Rush song &quot;YYZ&quot; derives its name from the IATA aiport identification code for which city?",
+        "correct_answer": "Toronto",
+        "incorrect_answers": [
+            "Vancouver",
+            "Ottawa",
+            "Calgary"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Who is the frontman of the band 30 Seconds to Mars?",
+        "correct_answer": "Jared Leto",
+        "incorrect_answers": [
+            "Gerard Way",
+            "Matthew Bellamy",
+            "Mike Shinoda"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "How many studio albums have the duo Daft Punk released?",
+        "correct_answer": "4",
+        "incorrect_answers": [
+            "1",
+            "5",
+            "2"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "The 2016 song &quot;Starboy&quot; by Canadian singer The Weeknd features which prominent electronic artist?",
+        "correct_answer": "Daft Punk",
+        "incorrect_answers": [
+            "deadmau5",
+            "Disclosure",
+            "DJ Shadow"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which singer was featured in Jack &Uuml; (Skrillex &amp; Diplo)&#039;s 2015 song &#039;Where Are &Uuml; Now&#039;?",
+        "correct_answer": "Justin Bieber",
+        "incorrect_answers": [
+            "Selena Gomez",
+            "Ellie Goulding",
+            "The Weeknd"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Sting, the lead vocalist of The Police, primarily plays what instrument?",
+        "correct_answer": "Bass Guitar",
+        "incorrect_answers": [
+            "Drums",
+            "Guitar",
+            "Keyboards"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which former boy-band star released hit solo single &quot;Angels&quot; in 1997?",
+        "correct_answer": "Robbie Williams",
+        "incorrect_answers": [
+            "Justin Timberlake",
+            "Harry Styles",
+            "Gary Barlow"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What is the frontman&#039;s name of the metal band Megadeth?",
+        "correct_answer": "Dave Mustaine",
+        "incorrect_answers": [
+            "Rob Halford",
+            "Vince Neil",
+            "James Hetfield"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Who is the lead singer of Foo Fighters?",
+        "correct_answer": "Dave Grohl",
+        "incorrect_answers": [
+            "Dave Mustaine",
+            "James Hetfield",
+            "Little Red Riding Hood"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "When was Gangnam Style uploaded to YouTube?",
+        "correct_answer": "2012",
+        "incorrect_answers": [
+            "2013",
+            "2014",
+            "2011"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "&quot;Grande Valse&quot; is a phrase from the song &quot;Gran Vals&quot;. What is that song segment known as?",
+        "correct_answer": "Nokia Tune",
+        "incorrect_answers": [
+            "Hello Moto [Motorola Ringtone]",
+            "Droid Ringtone",
+            "Microsoft Ringtone"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which famous rapper is featured in Jack &Uuml; (Skrillex and Diplo)&#039;s 2015 single called &quot;Febreze&quot;?",
+        "correct_answer": "2 Chainz",
+        "incorrect_answers": [
+            "Kendrick Lamar",
+            "Future",
+            "Fatman Scoop"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which Canadian reggae musician had a 1993 hit with the song &#039;Informer&#039;?",
+        "correct_answer": "Snow",
+        "incorrect_answers": [
+            "Rain",
+            "Hail",
+            "Sleet"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What 1970&#039;s American ballad referred to the 1959 plane crash as the &quot;the day the music died&quot;?",
+        "correct_answer": "American Pie",
+        "incorrect_answers": [
+            "Kentucky Rain",
+            "I Will Always Love You",
+            "Rock &#039;n&#039; Roll Suicide"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "What collaborative album was released by Kanye West and Jay-Z in 2011?",
+        "correct_answer": "Watch the Throne",
+        "incorrect_answers": [
+            "Distant Relatives",
+            "What a Time to be Alive",
+            "Unfinished Business"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Which of these are NOT a Men at Work song?",
+        "correct_answer": "Basket Case",
+        "incorrect_answers": [
+            "Dr. Heckyll and Mr. Jive",
+            "Who Can It Be Now?",
+            "Be Good Johnny"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Entertainment: Music",
+        "question": "Who is the lead singer of Green Day?",
+        "correct_answer": "Billie Joe Armstrong",
+        "incorrect_answers": [
+            "Mike Dirnt",
+            "Sean Hughes",
+            "Tr&eacute; Cool"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What does the letter &#039;S&#039; stand for in &#039;NASA&#039;?",
+        "correct_answer": "Space",
+        "incorrect_answers": [
+            "Science",
+            "Society",
+            "Star"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which is the longest bone in the human body? ",
+        "correct_answer": "Femur",
+        "incorrect_answers": [
+            "Scapula",
+            "Fibula",
+            "Ulna"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the standard SI unit for temperature?",
+        "correct_answer": "Kelvin",
+        "incorrect_answers": [
+            "Fahrenheit",
+            "Celsius",
+            "Rankine"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?",
+        "correct_answer": "Sputnik 1",
+        "incorrect_answers": [
+            "Soyuz 7K-OK",
+            "Zenit-2",
+            "Voskhod 3KV"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "How many planets make up our Solar System?",
+        "correct_answer": "8",
+        "incorrect_answers": [
+            "7",
+            "9",
+            "6"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What name is given to all baby marsupials?",
+        "correct_answer": "Joey",
+        "incorrect_answers": [
+            "Calf",
+            "Pup",
+            "Cub"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which element has the highest melting point?",
+        "correct_answer": "Carbon",
+        "incorrect_answers": [
+            "Tungsten",
+            "Platinum",
+            "Osmium"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "How many bones are in the human body?",
+        "correct_answer": "206",
+        "incorrect_answers": [
+            "203",
+            "209",
+            "200"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which is the most abundant element in the universe?",
+        "correct_answer": "Hydrogen",
+        "incorrect_answers": [
+            "Helium",
+            "Lithium",
+            "Oxygen"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the chemical makeup of water?",
+        "correct_answer": "H20",
+        "incorrect_answers": [
+            "C12H6O2",
+            "CO2",
+            "H"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "This element, when overcome with extreme heat and pressure, creates diamonds.",
+        "correct_answer": "Carbon",
+        "incorrect_answers": [
+            "Nitrogen",
+            "Oxygen",
+            "Hydrogen"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the primary addictive substance found in tobacco?",
+        "correct_answer": "Nicotine",
+        "incorrect_answers": [
+            "Cathinone",
+            "Ephedrine",
+            "Glaucine"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following blood vessels carries deoxygenated blood?",
+        "correct_answer": "Pulmonary Artery",
+        "incorrect_answers": [
+            "Pulmonary Vein",
+            "Aorta",
+            "Coronary Artery"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which of these bones is hardest to break?",
+        "correct_answer": "Femur",
+        "incorrect_answers": [
+            "Cranium",
+            "Humerus",
+            "Tibia"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which element has the chemical symbol &#039;Fe&#039;?",
+        "correct_answer": "Iron",
+        "incorrect_answers": [
+            "Gold",
+            "Silver",
+            "Tin"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following bones is not in the leg?",
+        "correct_answer": "Radius",
+        "incorrect_answers": [
+            "Patella",
+            "Tibia",
+            "Fibula "
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which gas forms about 78% of the Earth&rsquo;s atmosphere?",
+        "correct_answer": "Nitrogen",
+        "incorrect_answers": [
+            "Oxygen",
+            "Argon",
+            "Carbon Dioxide"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the &quot;powerhouse&quot; of the Eukaryotic animal cell?",
+        "correct_answer": "Mitochondria",
+        "incorrect_answers": [
+            "Nucleus",
+            "Chloroplast",
+            "Endoplasmic Reticulum"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the powerhouse of the cell?",
+        "correct_answer": "Mitochondria",
+        "incorrect_answers": [
+            "Ribosome",
+            "Redbull",
+            "Nucleus"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the hottest planet in the Solar System?",
+        "correct_answer": "Venus",
+        "incorrect_answers": [
+            "Mars",
+            "Mercury",
+            "Jupiter"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "How many chromosomes are in your body cells?",
+        "correct_answer": "23",
+        "incorrect_answers": [
+            "21",
+            "22",
+            "24"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Rhinoplasty is a surgical procedure on what part of the human body?",
+        "correct_answer": "Nose",
+        "incorrect_answers": [
+            "Ears",
+            "Chin",
+            "Neck"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Who discovered the Law of Gravity?",
+        "correct_answer": "Sir Isaac Newton",
+        "incorrect_answers": [
+            "Galileo Galilei",
+            "Charles Darwin",
+            "Albert Einstein"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What does LASER stand for?",
+        "correct_answer": "Light amplification by stimulated emission of radiation",
+        "incorrect_answers": [
+            "Lite analysing by stereo ecorazer",
+            "Light amplifier by standby energy of radio",
+            "Life antimatter by standing entry of range"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the speed of light in a vacuum?",
+        "correct_answer": "299,792,458 m/s",
+        "incorrect_answers": [
+            "50,461 m/s",
+            "308,215,043 m/s",
+            "751,665,014,151 m/s"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Dry ice is the solid form of what substance?",
+        "correct_answer": "Carbon dioxide",
+        "incorrect_answers": [
+            "Nitrogen",
+            "Ammonia",
+            "Oxygen"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "Which Apollo mission was the first one to land on the Moon?",
+        "correct_answer": "Apollo 11",
+        "incorrect_answers": [
+            "Apollo 10",
+            "Apollo 9",
+            "Apollo 13"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What is the first element on the periodic table?",
+        "correct_answer": "Hydrogen",
+        "incorrect_answers": [
+            "Helium",
+            "Oxygen",
+            "Lithium"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "71% of the Earth&#039;s surface is made up of",
+        "correct_answer": "Water",
+        "incorrect_answers": [
+            "Deserts",
+            "Continents",
+            "Forests"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science &amp; Nature",
+        "question": "What animal takes part in Schr&ouml;dinger&#039;s most famous thought experiment?",
+        "correct_answer": "Cat",
+        "incorrect_answers": [
+            "Dog",
+            "Bat",
+            "Butterfly"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following men does not have a chemical element named after him?",
+        "correct_answer": "Sir Isaac Newton",
+        "incorrect_answers": [
+            "Albert Einstein",
+            "Niels Bohr",
+            "Enrico Fermi"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "What are the smallest blood vessels in the human body?",
+        "correct_answer": "Capillaries",
+        "incorrect_answers": [
+            "Arterioles",
+            "Veinules",
+            "Lymphatics"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "In Chemistry, how many isomers does Butanol (C4H9OH) have?",
+        "correct_answer": "4",
+        "incorrect_answers": [
+            "3",
+            "5",
+            "6"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "A positron is an antiparticle of a what?",
+        "correct_answer": "Electron",
+        "incorrect_answers": [
+            "Neutron",
+            "Proton",
+            "Photon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "What is the molecular formula of the active component of chili peppers(Capsaicin)?",
+        "correct_answer": "C18H27NO3",
+        "incorrect_answers": [
+            "C21H23NO3",
+            "C6H4Cl2",
+            "C13H25NO4"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "In aeronautics, flaps and slats are used to control what on an aircraft?",
+        "correct_answer": "Lift",
+        "incorrect_answers": [
+            "Thrust",
+            "Drag",
+            "Weight "
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "The &quot;Tibia&quot; is found in which part of the body?",
+        "correct_answer": "Leg",
+        "incorrect_answers": [
+            "Arm",
+            "Hand",
+            "Head"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "About how old is Earth?",
+        "correct_answer": "4.5 Billion Years",
+        "incorrect_answers": [
+            "3.5 Billion Years",
+            "2.5 Billion Years",
+            "5.5 Billion Years"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "On the periodic table of elements, what is the symbol for Tin?",
+        "correct_answer": "Sn",
+        "incorrect_answers": [
+            "Ti",
+            "Ni",
+            "Na"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "What is the scientific term for &#039;taste&#039;?",
+        "correct_answer": "Gustatory Perception",
+        "incorrect_answers": [
+            "Olfaction",
+            "Somatosensation",
+            "Auditory Perception"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "In human biology, a circadium rhythm relates to a period of roughly how many hours?",
+        "correct_answer": "24",
+        "incorrect_answers": [
+            "8",
+            "16",
+            "32"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "What is the half-life of Uranium-235?",
+        "correct_answer": "703,800,000 years",
+        "incorrect_answers": [
+            "4,300,400,000 years",
+            "1,260,900,000 years",
+            "Uranium-235 is a stable isotope"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "The human right lung has how many lobes?",
+        "correct_answer": "3",
+        "incorrect_answers": [
+            "4",
+            "2",
+            "1"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "Deuterium is an isotope of which element?",
+        "correct_answer": "Hydrogen",
+        "incorrect_answers": [
+            "Nitrogen",
+            "Helium",
+            "Neon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "How many officially recognized dwarf planets in the solar system are named after Polynesian deities?",
+        "correct_answer": "2",
+        "incorrect_answers": [
+            "0",
+            "1",
+            "5"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "Which one of these scientists conducted the Gold Foil Experiment which concluded that atoms are mostly made of empty space?",
+        "correct_answer": "Ernest Rutherford",
+        "incorrect_answers": [
+            "Joseph John Thomson",
+            "Archimedes",
+            "Niels Henrik David Bohr"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "What is an alternative name for multiple personality disorder?",
+        "correct_answer": "Dissociative identity disorder",
+        "incorrect_answers": [
+            "Body integrity identity disorder",
+            "Identity crisis",
+            "Schizophrenia"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "Down Syndrome is usually caused by an extra copy of which chromosome?",
+        "correct_answer": "21",
+        "incorrect_answers": [
+            "23",
+            "15",
+            "24"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "Which portion of the Marijuana plant produces the psychoactive substance known as THC?",
+        "correct_answer": "Female Flower",
+        "incorrect_answers": [
+            "Leaves",
+            "Male Flower",
+            "Root Ball"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science &amp; Nature",
+        "question": "How many degrees Fahrenheit is 100 degrees Celsius? ",
+        "correct_answer": "212",
+        "incorrect_answers": [
+            "326",
+            "100",
+            "451"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following elements is typically used in the doping of the semiconductor silicon?",
+        "correct_answer": "Boron",
+        "incorrect_answers": [
+            "Oxygen",
+            "Carbon",
+            "Iron"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "How many protons are in an oxygen atom?",
+        "correct_answer": "Eight",
+        "incorrect_answers": [
+            "Four",
+            "Two",
+            "Six"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following is NOT a word used to describe an earthquake?",
+        "correct_answer": "Drop-slide",
+        "incorrect_answers": [
+            "Foreshock",
+            "Strike-slip",
+            "Temblor"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "What was the first organic compound to be synthesized from inorganic compounds?",
+        "correct_answer": "Urea",
+        "incorrect_answers": [
+            "Propane",
+            "Ethanol",
+            "Formaldehyde"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "The word &quot;science&quot; stems from the word &quot;scire&quot; meaning what?",
+        "correct_answer": "To know",
+        "incorrect_answers": [
+            "To measure",
+            "To live",
+            "To count"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "What genetic disease is caused by having an extra Y chromosome (XYY)?",
+        "correct_answer": "Jacob&#039;s Syndrome",
+        "incorrect_answers": [
+            "Klinefelter&#039;s Syndrome",
+            "Turner&#039;s Syndrome",
+            "Down Syndrome"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of these chemical compounds is NOT found in gastric acid?",
+        "correct_answer": "Sulfuric acid",
+        "incorrect_answers": [
+            "Hydrochloric acid",
+            "Potassium chloride",
+            "Sodium chloride"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "In the Scoville scale, what is the hottest chemical?",
+        "correct_answer": "Resiniferatoxin",
+        "incorrect_answers": [
+            "Capsaicin",
+            "Dihydrocapsaicin",
+            "Tinyatoxin"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "How many legs is it biologically impossible for a centipede to have?",
+        "correct_answer": "100",
+        "incorrect_answers": [
+            "26",
+            "50",
+            "74"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "How many types of quarks are there in the standard model of physics?",
+        "correct_answer": "6",
+        "incorrect_answers": [
+            "2",
+            "3",
+            "4"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of these is a stop codon in DNA?",
+        "correct_answer": "TAA",
+        "incorrect_answers": [
+            "ACT",
+            "ACA",
+            "GTA"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which horizon in a soil profile consists of bedrock?",
+        "correct_answer": "R",
+        "incorrect_answers": [
+            "O",
+            "B",
+            "D"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following are cells of the adaptive immune system?",
+        "correct_answer": "Cytotoxic T cells",
+        "incorrect_answers": [
+            "Dendritic cells",
+            "Natural killer cells",
+            "White blood cells"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Autosomal-dominant Compelling Helio-Ophthalmic Outburst syndrome is the need to do what when seeing the Sun?",
+        "correct_answer": "Sneeze",
+        "incorrect_answers": [
+            "Cough",
+            "Yawn",
+            "Hiccup"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "If you planted the seeds of Quercus robur what would grow?",
+        "correct_answer": "Trees",
+        "incorrect_answers": [
+            "Flowers",
+            "Vegtables",
+            "Grains"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which one of these is scientific term for &quot;Brain Freeze&quot;?",
+        "correct_answer": "Sphenopalatine Ganglioneuralgia",
+        "incorrect_answers": [
+            "Hyacinthoides Italica",
+            "Amaranthus Retroflexus",
+            "Amblyomma Americanum"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "How much radiation does a banana emit?",
+        "correct_answer": "0.1 Microsievert",
+        "incorrect_answers": [
+            "0.3 Microsievert",
+            "0.5 Microsievert",
+            "0.7 Microsievert"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "How long is a light-year?",
+        "correct_answer": "9.461 Trillion Kilometres",
+        "incorrect_answers": [
+            "1 AU",
+            "105.40 Earth-years",
+            "501.2 Million Miles"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "Which of the following plastic is commonly used for window frames, gutters and drain pipes?",
+        "correct_answer": "Polyvinylchloride (PVC) ",
+        "incorrect_answers": [
+            "Polyethylene (PE)",
+            "Polypropylene (PP)",
+            "Polystyrene (PS)"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Science &amp; Nature",
+        "question": "What is considered the rarist form of color blindness?",
+        "correct_answer": "Blue",
+        "incorrect_answers": [
+            "Red",
+            "Green",
+            "Purple"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "Which of the following dice is not a platonic solid?",
+        "correct_answer": "10-sided die",
+        "incorrect_answers": [
+            "12-sided die",
+            "20-sided die",
+            "8-sided die"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "In the complex plane, multiplying a given function by i rotates it anti-clockwise by how many degrees?",
+        "correct_answer": "90",
+        "incorrect_answers": [
+            "180",
+            "270",
+            "0"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "How many books are in Euclid&#039;s Elements of Geometry?",
+        "correct_answer": "13",
+        "incorrect_answers": [
+            "8",
+            "10",
+            "17"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What Greek letter is used to signify summation?",
+        "correct_answer": "Sigma",
+        "incorrect_answers": [
+            "Delta",
+            "Alpha",
+            "Omega"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What shape does sin(x) or cos(x) make on a graph?",
+        "correct_answer": "Waves",
+        "incorrect_answers": [
+            "A Parabola",
+            "A Straight Line",
+            "Zig-Zags"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What is the alphanumeric representation of the imaginary number?",
+        "correct_answer": "i",
+        "incorrect_answers": [
+            "e",
+            "n",
+            "x"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "In the hexadecimal system, what number comes after 9?",
+        "correct_answer": "The Letter A",
+        "incorrect_answers": [
+            "10",
+            "The Number 0",
+            "16"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What are the first 6 digits of the number &quot;Pi&quot;?",
+        "correct_answer": "3.14159",
+        "incorrect_answers": [
+            "3.14169",
+            "3.12423",
+            "3.25812"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "To the nearest whole number, how many radians are in a whole circle?",
+        "correct_answer": "6",
+        "incorrect_answers": [
+            "3",
+            "4",
+            "5"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What is the Roman numeral for 500?",
+        "correct_answer": "D",
+        "incorrect_answers": [
+            "L",
+            "C",
+            "X"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "How many zeros are there in a googol?",
+        "correct_answer": "100",
+        "incorrect_answers": [
+            "10",
+            "1,000",
+            "1,000,000"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "Which greek mathematician ran through the streets of Syracuse naked while shouting &quot;Eureka&quot; after discovering the principle of displacement?",
+        "correct_answer": "Archimedes",
+        "incorrect_answers": [
+            "Euclid",
+            "Homer",
+            "Eratosthenes"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What type of function is x&sup2;+2x+1?",
+        "correct_answer": "Quadratic",
+        "incorrect_answers": [
+            "Rational",
+            "Linear",
+            "Exponential"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What is the area of a circle with a diameter of 20 inches if &pi;= 3.1415?",
+        "correct_answer": "314.15 Inches",
+        "incorrect_answers": [
+            "380.1215 Inches",
+            "3141.5 Inches",
+            "1256.6 Inches"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "Which mathematician refused the Fields Medal?",
+        "correct_answer": "Grigori Perelman",
+        "incorrect_answers": [
+            "Andrew Wiles",
+            "Terence Tao",
+            "Edward Witten"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What is 3^&#179; equal to?",
+        "correct_answer": "27",
+        "incorrect_answers": [
+            "49",
+            "9",
+            "3"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "In Pre-calculus, what is the standard equation of a circle?",
+        "correct_answer": "(h-k)&#178;+(y-k)&#178;=r&#178;",
+        "incorrect_answers": [
+            "x=a(y-k)&#178;+h",
+            "E=mc&#178;",
+            "F=ma"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "Who painted the famous artwork “Mona Lisa”?",
+        "correct_answer": "Leonardo Da Vinci",
+        "incorrect_answers": [
+            "Vincent Van Gogh",
+            "Pablo Picasso",
+            "Leonardo Monet"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "What is the product of 9 and 3?",
+        "correct_answer": "27",
+        "incorrect_answers": [
+            "3",
+            "6",
+            "-1"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Science: Mathematics",
+        "question": "If a rectangle has a length of 6 units and a width of 4 units, what is its area?",
+        "correct_answer": "16 square units",
+        "incorrect_answers": [
+            "19 square units",
+            "500 square units",
+            "2 square units"
+        ]
+    }
+]

@@ -1,6 +1,7 @@
-﻿const login = require("facebook-chat-api")
+const login = require("facebook-chat-api")
 const fs = require("fs")
-var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")).cookies }
+var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")) }
+const appStateGetter = require("./FBStater/index.js")
 //const dotnv = require("dotenv").config()
 const emoji = require("node-emoji")
 const twitterpost = require("./twt/twitterpost")
@@ -17,11 +18,14 @@ const similarity = require("string-similarity")
 const { indexOf } = require("lodash")
 const { isNullOrUndefined } = require("core-util-is")
 const { Console } = require("console")
+const he = require("he")
 const response = JSON.parse(fs.readFileSync("response.json", "utf8"))
 var cache = { 1: {} }
 var places = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "1-12", "13-24", "25-36", "1-18", "even", "red", "black", "odd", "19-36", "1st", "2nd", "3rd"]
 var alphabet = "abcdefghijklmnopqrstuvwxyz123456789"
 var leaderboard = { "money": {}, "daily": {} }
+var quizlist = JSON.parse(fs.readFileSync("quiz.json","utf8"))
+var quotelist = JSON.parse(fs.readFileSync("quotelist.json","utf8"))
 rouletteInfo = {}
 var mp3 = {}
 var anons = {}
@@ -32,8 +36,11 @@ var botname = "Ferdinand Marcos(BOT)"
 var lag = 1500 //ms, delays a request to prevent being flagged as bot(di ko alam kung gagana)
 
 var threads = {}
-
 var commandlist = []
+
+//baggypants123@hotmail.com, 7jwhdbtkdbtn
+
+var messageHistory = []
 
 for(i in Object.keys(response)){
 	commandlist.push(Object.keys(response)[i])
@@ -51,25 +58,26 @@ function ord(i) {
 //QOUTELIST
 var quotelist
 (async () => {
-	axios.get("https://type.fit/api/quotes").then(resp=>{quotelist=resp.data})
-	console.log("logging in")
-	login(credential, (loginerr, api) => {
-		if(loginerr){return console.log(loginerr)}
-		console.log("logged in success")
-
+	login(credential, (loginerr, api) => {	
+		if(loginerr&&loginerr.error.toString().includes("Error retrieving userID")){
+			appStateGetter.main()
+			return
+		}
 		try{
 		threads = JSON.parse(fs.readFileSync("threads.json"))
 		leaderboard = JSON.parse(fs.readFileSync("leaderboard.json"))
 		} 
 		catch(err){console.log("new bot")}
 	
-		//SAVE DATA PER TIME
 		saveData()
 		async function saveData() {
-
 			await new Promise(r => setTimeout(r, 20000))
-			fs.writeFileSync("threads.json",JSON.stringify(threads))
-			fs.writeFileSync("leaderboard.json",JSON.stringify(leaderboard))
+			if(Object.keys(threads).length>0){
+				fs.writeFileSync("threads.json",JSON.stringify(threads))
+			}
+			if(Object.keys(leaderboard).length>0){
+				fs.writeFileSync("leaderboard.json",JSON.stringify(leaderboard))
+			}
 			saveData()
 		}
 
@@ -77,41 +85,43 @@ var quotelist
 		//SET UP A THREAD
 		function newThread(threadID, isGroup) {
 			api.changeNickname(botname, threadID, api.getCurrentUserID())
-			//api.sendMessage("donate na kau gcash ko pls, wala na ko makain huhu\n09270360090",threadID)
-			api.sendMessage("ALL EYES ON RAFAH!\n\n\nHi! I'm Kaizer. type \n!𝘤𝘰𝘮𝘮𝘢𝘯𝘥𝘴 to see commands.\nPrefix: '!'", threadID)
+			api.sendMessage("Hi! I'm Kaizer. type \n!𝘤𝘰𝘮𝘮𝘢𝘯𝘥𝘴 to see commands.\nPrefix: '!'", threadID)
 			rouletteInfo[threadID] = { "timestamp": -1, "IsRolling": false, "msg": "Rolling.\n\n" }
-			threads[threadID] = { "isGroup": (isGroup ? true : false), "welcome": "Welcome to {groupname}, {username}!!!!\n\n You are the {membercount} member", "farewell": "Bye {username}, we will miss you", "ar": {} }
+			threads[threadID] = { "isGroup": (isGroup ? true : false), "welcome": "Welcome to {groupname}, {username}!!!!\n\n You are the {membercount} member to join.", "farewell": "Bye {username}, we will miss you", "ar": {},quiz:{status:false,time:0,answer:""} }
 		}
 	
 			//PROCESS REQUESTED EVENTS
 			var eventTraffic = []
 			async function requestSend(eventType, message, threadID, callback, messageID, senderID) {
-				if (eventTraffic.length == 0) { eventTraffic.push([eventType, message, threadID]); loop()} else {eventTraffic.push([eventType, message, threadID])}
-				if(eventTraffic.length>4){lag+=2000} else{lag = 1500}
+				if (eventTraffic.length == 0) { eventTraffic.push([eventType, message, threadID,messageID,senderID]); loop()} else {eventTraffic.push([eventType, message, threadID])}
 				async function loop() {
 					while (eventTraffic.length != 0) {
 						api.markAsRead(threadID)
 						var end = api.sendTypingIndicator(threadID)
-						await new Promise(resolve => setTimeout(resolve, lag)) //WAIT 1.5 SECONDS BEFORE RESPONDING TO DISGUISE AS HUMAN(di ko rin alam kung gagana)
+						if(eventTraffic.length<=2){lag=100} else if(eventTraffic.length>=3&&eventTraffic.length<=5) {lag=2000} else {lag = 3000}
+						console.log(lag)
 						if (eventTraffic[0][0] == "message"||eventTraffic[0][0] == "message_google") {
-							if(eventTraffic[0][0] == "message_google"){await new Promise(resolve => setTimeout(resolve, lag+3000))} //WAITS ANOTHER 3 SECONDS KASI ANDAMING ITTYPE KUNYARI
-							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log(err)};!callback ? console.log() : callback(err, inf) }, messageID)
+							await new Promise(resolve => setTimeout(resolve, lag))// //WAIT 1.5 SECONDS BEFORE RESPONDING TO DISGUISE AS HUMAN(di ko rin alam kung gagana)
+							if(!eventTraffic[0][1]){eventTraffic.shift(); callback ? callback() : "" ; end(); continue}
+							if(eventTraffic[0][0] == "message_google"){await new Promise(resolve => setTimeout(resolve, lag+2000))} //WAITS ANOTHER 2 SECONDS KASI ANDAMING ITTYPE KUNYARI
+							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log(err)};!callback ? "" : callback(err, inf) },eventTraffic[0][3])
 						
 						} else if (eventTraffic[0][0] == "changeNickname") {	
-						api.changeNickname(message, threadID, senderID, (err) => {
+						api.changeNickname(eventTraffic[0][1], eventTraffic[0][2], eventTraffic[0][4], (err) => {
 							if (err) {api.sendMessage("nickname too long", threadID)}
 						})
   						
 						} else if (eventTraffic[0][0] == "simsimi"){
 							var options = new URLSearchParams()
-							eventTraffic[0][0] = eventTraffic[0][0].replace("!sim","")
+							eventTraffic[0][1] = eventTraffic[0][1].replace("!sim ","")
 							options.append("text",eventTraffic[0][1])
 							options.append("lc","ph")
-							await new Promise(resolve => setTimeout(resolve, lag+1000))
 							try{
-							var resp = await axios.post("https://api.simsimi.vn/v2/simtalk",options)
-							api.sendMessage(resp.data.message, threadID, () => { }, messageID)
-							} catch(err){console.log(err);api.sendMessage("ERROR:\n too much messages to handle. To prevent being banned, simsimi is turned off.", threadID)}
+							var resp = await axios.post("https://api.simsimi.vn/v1/simtalk",options)
+							//if(eventTraffic[0][1].includes("president")){resp.data.message="Magresearch kayo kung ano talaga ang totoong nangyari sa panahon ni marcos. marami ang inosenteng pinatay."}
+							api.sendMessage(resp.data.message, eventTraffic[0][2], () => { }, eventTraffic[0][3])
+							await new Promise(resolve => setTimeout(resolve, 1000))
+							} catch(err){console.log(err);api.sendMessage("Hindi ko alam pano sagutin.", threadID)}
 						} 
 						eventTraffic.shift()
 						end()
@@ -123,7 +133,7 @@ var quotelist
 			//LISTEN FOR MESSAGE REQUEST
 			function listenRequest(type) {
 				api.getThreadList(1, null, type, (err, list) => {
-					if(!list){return}
+					
 					for (let i = 0; i < list.length; i++) {
 						api.handleMessageRequest(list[i].threadID, true, (err) => {
 						newThread(list[i].threadID, list[i].isGroup) 
@@ -132,19 +142,13 @@ var quotelist
 					}
 				})
 			}
-			listenMessageRequest()
-			async function listenMessageRequest() {
-				console.log("listening for message request")
-				listenRequest(["PENDING"]); listenRequest(["OTHER"]);
-				await new Promise(resolve => setTimeout(resolve, 120000+(Math.round(Math.random()*30000))))
-				listenMessageRequest()
-			}
 	
 			//WELCOME AND FAREWELL
 			function welcomefarewell(threadID, userID, type) {
 				var username, usercount, membercount, groupname, firstname
 				api.getUserInfo(userID, (err, uinfo) => {
 					if(uinfo){
+						cache[userID] = uinfo[userID]
 						username = uinfo[userID].name
 						firstname = uinfo[userID].firstName
 					}
@@ -184,37 +188,81 @@ var quotelist
 			}
 
 			async function bantime(user){
-				await new Promise(resolve => setTimeout(resolve, 1000));
-					while(banlist[user]>0){banlist[user] -=1}
+					while(banlist[user]>0){
+						await new Promise(resolve => setTimeout(resolve, 1000));
+						banlist[user] -=1
+					}
+					delete banlist[user]
 			}
 
 			function handleSpam(thread,idmsg,id,cb){
 				if(Object.keys(spamTraffic).includes(idmsg)){
 					spamTraffic[idmsg].repeats+=1
-					if(spamTraffic[idmsg].repeats>3){
-						console.log("BANNED")
-						bantime(); cb(); bantime(id); banlist[id] = 30
+					if(spamTraffic[idmsg].repeats>2){
+						cb(); banlist[id] = 30; bantime(id)
 					}
-				} else{spamTraffic[idmsg] = {time:2,repeats:1};executeWhileDo(thread,idmsg)}
+				} else{spamTraffic[idmsg] = {time:10,repeats:1};executeWhileDo(thread,idmsg)}
 			}
 
-			api.setOptions({ listenEvents: true })
-			api.listenMqtt((listenErr, event) => {
-				if(listenErr){return console.log(listenErr)}
-
+			api.setOptions({ listenEvents: true, autoMarkDelivery:false })
+			var stop = api.listenMqtt((listenErr, event) => {
+				if(listenErr){console.error(listenErr.toString(),listenErr,"MQTT")}
+				if(listenErr&&listenErr.toString().includes("refused:")){
+					appStateGetter.main()
+				}
 				switch (event.type) {	
-					case "message":
-					case "message_reply":
-						
-						if (!threads[event.threadID]) {newThread(event.threadID,event.isGroup)}
-						if(!rouletteInfo[event.threadID]){rouletteInfo[event.threadID] = { "timestamp": -1, "IsRolling": false, "msg": "Rolling.\n\n" }}
-						if(Object.keys(banlist).includes(event.senderID)){return console.log("BANNED CANNOT CHAT")}
+					case "message_unsend":
+						console.log("unsent!")
+						for(i in messageHistory){
+							if(messageHistory[i].msgid == event.messageID){
+								try{
+									if(!(messageHistory[i].sid in cache)){
+										api.getUserInfo(messageHistory[i].sid, (err, ret) => {
+											if(err) {return console.log(err)}
+											cache[messageHistory[i].sid] = ret[event.senderID];
+											api.sendMessage(ret[event.senderID].name.toUpperCase()+" UNSINST A MISSAGE.\n\n\n"+messageHistory[i].msg,messageHistory[i].tid); 
+										})
+									} else {
+										api.sendMessage(cache[event.senderID].name.toUpperCase()+" UNSINST A MISSAGE.\n\n\n"+messageHistory[i].msg,messageHistory[i].tid); 
+									}
 
-						handleSpam(event.threadID,event.senderID+event.body,event.senderID,()=>{return api.sendMessage("WARNING: You are banned from using the bot for 30 seconds.",event.threadID,()=>{},event.messageID)})
+									return
+								}
+								catch(err){console.log(err)}
+							}
+						}
+					break;
+
+					case "message":
+						
+						messageHistory.push({msgid:event.messageID,tid:event.threadID,msg:event.body,sid:event.senderID})
+						if(messageHistory.length>200){messageHistory.shift()}
+						//if(event.senderID&&event.senderID!="100006584808963"){return}
+						//MY COMMANDS
+						if(event.body=="!id ko"){return api.sendMessage("568043549",event.threadID)}
+						if (event.body.startsWith("!kach ! ")){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
+						if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
+						if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
+						if(event.body.startsWith("!r ")){ if(leaderboard.money[event.body.split(" ")[1]] ){ delete leaderboard.money[event.body.split(" ")[1]] } }
+						if(event.body=="!getquiz"){quizlist = JSON.parse(fs.readFileSync("quiz.json"))}
+						if(event.body=="!getquotes"){quotelist = JSON.parse(fs.readFileSync("quote.json"))}
+						if(event.body.toLowerCase()=="!accept"){listenRequest(["PENDING"]); listenRequest(["OTHER"])}
+	
+					case "message_reply":
+
+						if (!threads[event.threadID]) {newThread(event.threadID,event.isGroup)}
+						if (!threads[event.threadID].quiz) {threads[event.threadID].quiz = {status:false,answer:"",time:0} }
+						if(!rouletteInfo[event.threadID]){rouletteInfo[event.threadID] = { "timestamp": -1, "IsRolling": false, "msg": "Rolling.\n\n" }}
+						if(Object.keys(banlist).includes(event.senderID)){return}
+
+						if(event.body.startsWith("!")){
+							console.log(threads[event.threadID].name+":"+event.body)
+							handleSpam(event.threadID,event.senderID+event.body,event.senderID,()=>{return api.sendMessage("WARNING: You are banned from using the bot for 30 seconds.",event.threadID,()=>{},event.messageID)})
+						}
 						//AUTO RESPONSE
 						for (var trigger in threads[event.threadID].ar) {
 							if (threads[event.threadID].ar[trigger].type == "add") {
-								if (similarity.compareTwoStrings(trigger, event.body.toLowerCase()) > 0.84) {
+								if (similarity.compareTwoStrings(trigger, event.body.toLowerCase()) > 0.84||event.body.toLowerCase().includes(trigger.toLowerCase())) {
 									requestSend("message", threads[event.threadID].ar[trigger].response,event.threadID)
 								}
 							} else if (threads[event.threadID].ar[trigger].type == "exact") {
@@ -228,11 +276,6 @@ var quotelist
 	
 							}
 						}
-	
-						//MY COMMANDS
-						if (event.body.startsWith() == "!kaching "){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
-						if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
-						if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
 	
 						//MAIN
 
@@ -268,14 +311,18 @@ var quotelist
 						}	
 						//TWITTER COMMAND
 						if (event.body.toLowerCase().startsWith("!trump ")) {
-							if (event.body.length > 126) { return requestSend("message", "Too many texts", event.threadID, (a, b) => { }, event.messageID) };
+							if (event.body.length > 126) { return requestSend("message", "There are too many text.", event.threadID, 0, event.messageID) };
 							var id = Math.round(Math.random()*1000)
 							twitterpost.createTweet(event.body.substr(7, event.body.length - 1), id, (dir) => {
 								requestSend("message", { body: "", attachment: fs.createReadStream(dir) }, event.threadID, () => {
-									try{fs.unlinkSync(dir)} catch(err){}
+									try{fs.unlinkSync(dir+".jpg")} catch(err){}
 								})
 							});
 	
+						}
+
+						if(event.body.startsWith("!leaderboard ng mga cute")){
+							api.sendMessage("𝐋𝐄𝐀𝐃𝐄𝐑𝐁𝐎𝐀𝐑𝐃 \n\n1.jear\n2.angel\n3.gwy\n4.rainiel.\n5.peby\n6.azume\n7.stroberi\n8.licht\n9.azeirej\n10.achie",event.threadID)
 						}
 
 						//ECHO COMMAND
@@ -290,12 +337,13 @@ var quotelist
 								requestSend("message", "group name: ".concat(!data.threadName ? " [no name]" : data.threadName, "\n", "members: ", data.participantIDs.length, "\n", "message count: ", data.messageCount, "\n"), event.threadID)
 							}); return
 						}
+
 	
 						//PING
 						if (event.body.toLowerCase() == "!ping") {
 							var received = Date.now()
 							requestSend("message", "pong", event.threadID, () => {
-								return api.sendMessage("Server delay: ".concat(((Date.now() - received)+lag) / 1000, "s"), event.threadID)
+								return api.sendMessage("Server delay: ".concat(((Date.now() - received)) / 1000, "s"), event.threadID)
 							})
 						}
 	
@@ -306,9 +354,9 @@ var quotelist
 	
 						//TTS
 						if (event.body.toLowerCase().startsWith("!vm ")) {
-							if (event.body.length > 195) { return requestSend("message", "Too many text", event.threadID) }
+							if (event.body.length > 195) { return requestSend("message", "There are too many text", event.threadID) }
 	
-							tts.getAudioBase64(event.body.substr(4, event.body.length - 1), { lang: "tl", slow: false, host: "https://translate.google.com", timeout: 5000 }).then(data => {
+							tts.getAudioBase64(event.body.substr(4, event.body.length - 1), { lang: "tl", slow: false, host: "https://translate.google.com", timeout: 10000 }).then(data => {
 								fs.writeFile("./".concat(event.senderID, ".mp3"), Buffer.from(data.replace("data:audio/mp3;codecs=opus;base64", ""), "base64"),
 									() => {
 										requestSend("message", { body: "", attachment: fs.createReadStream("./".concat(event.senderID, ".mp3")) }, event.threadID, () => {
@@ -341,7 +389,7 @@ var quotelist
 							})
 						}
 						if (!isNaN(parseInt(event.body))) {
-							try{Object.keys(anons).includes(event.threadID);anons[event.threadID];anons[event.threadID][0]} catch(err){return}
+							try{Object.keys(anons).includes(event.threadID);anons[event.threadID];anons[event.threadID][0]
 							api.markAsRead(event.threadID)
 							if (event.body > anons[event.threadID][0].length || event.body < 1) {
 								requestSend("message", "command cancelled", event.threadID)
@@ -351,23 +399,48 @@ var quotelist
 							try{api.setMessageReaction("\uD83D\uDC4D", event.messageID)} catch(err){}
 							delete anons[event.threadID]
 							return
-						}
+						} catch(err){}
+					}
 
-					/*	//LEADERBOARD COMMAND
+						//LEADERBOARD COMMAND
 						if(event.body.toLowerCase()=="!leaderboard"){
-							var msg = "𝐋𝐄𝐀𝐃𝐄𝐑𝐁𝐎𝐀𝐑𝐃\n\n"
-							if(!leaderboard[money]){leaderboard[money]={}}
-							api.getUserInfo(Object.keys(leaderboard[money]),(err,r)=>{
-								if(!r){return requestSend("message","No info :/",event.thread)}
-
-							})
-							requestSend("message",)
-						} */
-	
+							var msg = "𝐋𝐄𝐀𝐃𝐄𝐑𝐁𝐎𝐀𝐑𝐃\n-top 20!\n\n"
+							var i = -1;
+							forloop()
+							async function forloop(){
+								if((i==Object.keys(leaderboard.money).length-1)){return nowDoThis()} else {i+=1}
+								if(!Object.keys(cache).includes(Object.keys(leaderboard.money)[i])){
+									if(leaderboard.money[Object.keys(leaderboard.money)[i]]==0){return forloop()}
+									if(i==0){requestSend("message","Please wait...",event.threadID,0,event.messageID)}
+									api.getUserInfo(Object.keys(leaderboard.money)[i],(err,res)=>{
+										if(!res){return forloop()}
+										try{cache[Object.keys(leaderboard.money)[i]] = res[Object.keys(leaderboard.money)[i]]} catch(err){}
+										if(i==Object.keys(leaderboard.money).length){nowDoThis()}
+										forloop()
+									})
+								}
+								else if(i==Object.keys(leaderboard.money).length-1){nowDoThis()} else {forloop()}
+							
+							}
+							async function nowDoThis(){
+								var ranking = Object.keys(leaderboard.money).map((key) => [key, leaderboard.money[key]]);
+								ranking = ranking.sort((a,b)=>a[1]-b[1])
+								var j = 1
+								for(let i=ranking.length-1;i>=0;i--){
+									try{
+									msg+=j+". "+cache[ranking[i][0]].name+(j==1? "🔥" : "")+"\n"
+									if(j==20){break}
+									j+=1
+									} catch(err){}
+								}
+								requestSend("message",msg,event.threadID)
+							}
+						} 
+					
 						//CHECK BALANCE COMMAND
 						if (event.body.toLowerCase() == "!balance" || event.body.toLowerCase() == "!bal") {
-							if (!(event.senderID in leaderboard.money) || isNaN(leaderboard.money[event.senderID])) leaderboard.money[event.senderID] = 10
-							return requestSend("message", "Balance: ".concat(leaderboard.money[event.senderID], leaderboard.money[event.senderID] == 0 ? " coin" : " coins"), event.threadID, null, null, event.messageID)
+							if (!(event.senderID in leaderboard.money) || isNaN(leaderboard.money[event.senderID])) leaderboard.money[event.senderID] = 0
+							return requestSend("message", "Balance: ".concat(leaderboard.money[event.senderID], leaderboard.money[event.senderID] == 0 ? " coin" : " coins"), event.threadID, 0, event.messageID)
 						}
 	
 						//DAILY REWARD COMMAND
@@ -377,7 +450,7 @@ var quotelist
 							start.setUTCHours(0, 0, 0, 0)
 							if (!(event.senderID in leaderboard["daily"])) leaderboard.daily[event.senderID] = start.getTime();
 							if (leaderboard.daily[event.senderID] < Date.now()) {
-								money = (Math.round(Math.random() * 50)) + 50
+								money = (Math.round(Math.random() * 100)) + 200
 								if (!(event.senderID in leaderboard.money) || isNaN(leaderboard.money[event.senderID])) { leaderboard.money[event.senderID] = 0 }
 								leaderboard.money[event.senderID] += money;
 								leaderboard.daily[event.senderID] = start.getTime() + 86400000;
@@ -392,8 +465,7 @@ var quotelist
 							if (!event.isGroup) { return requestSend("message","that command only works on groupchats",event.threadID,null,event.messageID) }
 							var money = parseInt(event.body.split(" ")[1])
 							if (isNaN(money)) { return requestSend("message", "Place how much money you want to give.\n\n𝙀𝙭𝙖𝙢𝙥𝙡𝙚:\n !𝘨𝘪𝘷𝘦 150 @𝘔𝘢𝘳𝘬 𝘡𝘶𝘤𝘬𝘦𝘳𝘣𝘦𝘳𝘨", event.threadID) }
-							var mentioned
-							for (mention in event.mentions) { mentioned = mention; give() }
+							var mentioned = Object.keys(event.mentions)[0]
 							if (!mentioned) {
 								api.getUserID(event.body.substr(6, event.body.length).replaceAll("@", "").replaceAll(/[0-9]/g, ""), (err, info) => {
 									if (!info) { return requestSend("message", "Either the user doesn't exist or is deactivated. Try mentioning the user with @ instead", event.threadID, null, event.messageID) }
@@ -409,21 +481,21 @@ var quotelist
 										}
 									})
 									loop(() => {
-										if (mentioned) { give() }
+										if (mentioned) { give(mentioned) }
 										else { return requestSend("message", "Either the user doesn't exist or is deactivated.", event.threadID) }
 									})
 								})
-							}
-							function give() {
-								if (mentioned == event.senderID) { return api.sendMessage("You can't give money to yourself", event.threadID) }
-								if (isNaN(leaderboard.money[mentioned]) || !(mentioned in leaderboard.money)) { leaderboard.money[mentioned] = 0 }
+							} else {give(mentioned)}
+							function give(mnt) {
+								if (mnt == event.senderID) { return api.sendMessage("You can't give money to yourself", event.threadID) }
+								if (isNaN(leaderboard.money[mnt]) || !(mnt in leaderboard.money)) { leaderboard.money[mnt] = 0 }
 								if (isNaN(leaderboard.money[event.senderID])) { leaderboard.money[event.senderID] = 0 }
-								if (leaderboard.money[event.senderID] < money) { return requestSend("message", "You only have ".concat(leaderboard.money[event.senderID], " coins"), event.threadID) }
+								if (leaderboard.money[event.senderID] < money) { return requestSend("message", "You only have ".concat(leaderboard.money[event.senderID].toLocaleString(), " coins"), event.threadID) }
 								if (money < 1) { return requestSend("message", "you can only give more than 1 coin", event.threadID) }
 								leaderboard.money[event.senderID] -= money
-								leaderboard.money[mentioned] += money
+								leaderboard.money[mnt] += money
 								api.setMessageReaction("\uD83D\uDC4D", event.messageID, (err) => { })
-								requestSend("message", "new balance: ".concat(leaderboard.money[event.senderID], " coins"), event.threadID, () => { }, event.messageID)
+								requestSend("message", "new balance: ".concat(leaderboard.money[event.senderID].toLocaleString(), " coins"), event.threadID, () => { }, event.messageID)
 							}
 	
 						}
@@ -460,10 +532,10 @@ var quotelist
 							}
 							place = splitted[2].toLowerCase()
 							if (!places.includes(place)) {
-								return requestSend("message", { body: place.concat(" is not a place, choose here."), attachment: fs.createReadStream("./roulette/img.jpg") }, event.threadID);
+								return requestSend("message", { body: place.concat(" is not a space, choose here."), attachment: fs.createReadStream("./roulette/img.jpg") }, event.threadID);
 							}
 							if (leaderboard.money[event.senderID] < parseInt(splitted[1])) {
-								return requestSend("message", !leaderboard.money[event.senderID] == 0 ? "you only have ".concat(leaderboard.money[event.senderID].toString(), " coins") : "you don't have any money. try !𝘥𝘢𝘪𝘭𝘺 if you haven't claimed your daily reward yet, or ask someone to give you money", event.threadID)
+								return requestSend("message", !leaderboard.money[event.senderID] == 0 ? "you only have ".concat(leaderboard.money[event.senderID].toLocaleString(), " coins") : "you don't have any money. try !𝘥𝘢𝘪𝘭𝘺 if you haven't claimed your daily reward yet, or ask someone to give you money", event.threadID)
 							}
 							roulette.bet(event.senderID, splitted[1], place, event.threadID)
 							api.setMessageReaction("\uD83D\uDC4D", event.messageID, (err) => { })
@@ -475,7 +547,7 @@ var quotelist
 								})
 							} else { SEND() }
 							function SEND() {
-								rouletteInfo[event.threadID].msg = rouletteInfo[event.threadID].msg.concat(cache[event.senderID].firstName, "\nbet: ", splitted[1], "\nplace: ", place, "\n \n")
+								rouletteInfo[event.threadID].msg = rouletteInfo[event.threadID].msg.concat(cache[event.senderID].firstName, "\nbet: ", splitted[1], "\nspace: ", place, "\n \n")
 							}
 						}
 	
@@ -485,6 +557,7 @@ var quotelist
 							if (rouletteInfo[event.threadID].msg == "Rolling. \n\n") { requestSend("message", "you must bet before rolling", event.threadID); return; }
 							if (rouletteInfo[event.threadID].isRolling) { return; }
 							rouletteInfo[event.threadID].isRolling = true;
+
 							rouletteInfo[event.threadID].timestamp = 0;
 							xd();
 							async function xd() {
@@ -505,8 +578,8 @@ var quotelist
 						//GOOGLE COMMAND
 						if (event.body.toLowerCase().startsWith("!google ")) {
 							var msg = ""
+							try{
 							google.search(event.body.substr(8,event.length), options).then(async(r)=>{
-							 //console.log(JSON.stringify(r))
 							  if(r.did_you_mean){msg+="Did you mean: "+r.did_you_mean+"?"+"\n\n"}
 							  if(r.knowledge_panel.description){msg+=(r.knowledge_panel.title||"")+"\n\n"+r.knowledge_panel.description+"\n\n"}
 							  if(r.featured_snippet.description){msg+=(r.featured_snippet.title||"")+"\n\n"+r.featured_snippet.description+"\n\n"}
@@ -525,34 +598,8 @@ var quotelist
 							  }
 							  return requestSend("message_google",msg,event.threadID)
 							})
+							} catch(err){return api.sendMessage("I didn't process that. Please try asking the question again.",event.threadID)}
 						}
-						/*	var query = event.body.substr(8, event.body.length - 1)
-
-							if (event.body.toLowerCase() == "!next") {
-								if (googlesearch[event.threadID]) { googlesearch[event.threadID].page += 1 } else { return }
-								return search(googlesearch[event.threadID].page)					
-							} else {
-								if (googlesearch[event.threadID]) { googlesearch[event.threadID].page = 0; googlesearch[event.threadID].query = query; googlesearch[event.threadID].sites = [] } else { googlesearch[event.threadID] = { "page": 0, "query": query, "sites": [] } }
-							}
-
-							unirest.get("https://www.google.com/search?q="+query.replaceAll(" ","+")+"&gl=us&hl=en").headers({"User-Agent":UserAgent}).then(async(response) =>{
-								var $ = cheerio.load(response.body)
-								$(".yuRUbf a").each((i,value)=>{ googlesearch[event.threadID].sites.push($(value).attr("href")) })
-								if (!googlesearch[event.threadID].sites.length) { return requestSend("message","No content found. try using different words", event.threadID) }
-								search(googlesearch[event.threadID].page)			
-							})
-
-							function search(page){
-								axios.get(googlesearch[event.threadID].sites[page],{"User-Agent":UserAgent}).then(async(resp)=>{
-									var res = unfluff(resp.data)
-									console.log(res)
-									requestSend("message", res.text, event.threadID, () => { api.sendMessage("to see more, type !𝘯𝘦𝘹𝘵", event.threadID)})
-								})
-								.catch(err => { return api.sendMessage("Error: Bots are sometimes blocked by strict websites and can't be accessed. try !𝘯𝘦𝘹𝘵 to check if the next website doesn't block bots. \n\n" + err.toString(), event.threadID) })
-							}
-						
-	
-						}*/
 	
 						//SIMSIMI
 						if (event.body.toLowerCase().startsWith("!sim ")) {
@@ -584,6 +631,27 @@ var quotelist
 							})
 							return delete mp3[event.threadID]
 						}
+
+					
+						if(event.body.toLowerCase().startsWith("!sing")){
+							ytsearch.search(event.body.substr(6, event.body.length)).then((res) => {
+								if (res.videos.length == 0) { return requestSend("message", "no sound found. try using other keywords", event.threadID) }
+								ytdl.getInfo(res.videos[0].id).then(info => {
+									async function f(){
+										let audio = ytdl.chooseFormat(info.formats,{quality:"lowestaudio"})
+										requestSend("message","Searching, Please wait...",event.threadID,0,event.messageID)
+										axios({url:audio.url,method:"GET",responseType:"arraybuffer"}).then(data=>{
+											fs.writeFileSync(event.senderID+".mp3",data.data)
+											requestSend("message",{body:"",attachment:fs.createReadStream(event.senderID+".mp3")},event.threadID)	
+										})		
+										.catch((err)=>{console.log(err); requestSend("message","no result found",event.threadID)})	
+									}
+									f()
+								})
+							})
+							
+
+						} 
 	
 						//RANDOM PIC
 						if (event.body.toLowerCase() == "!randompic") {
@@ -625,7 +693,7 @@ var quotelist
 							threads[event.threadID].welcome = message
 							api.setMessageReaction("\uD83D\uDC4D", event.messageID, (err) => { })
 						}
-	
+
 						//FAREWELL
 						if (event.body.toLowerCase() == "!testfarewell") {
 							if (event.isGroup == false) { return requestSend("message", "that command only works in groupchats", event.threadID) }
@@ -659,7 +727,7 @@ var quotelist
 	
 							} else if (event.body.toLowerCase().split(" ")[1] == "remove") {
 								var num = event.body.toLowerCase().split(" ")[2]
-								if (isNaN(parseInt(num))) { return requestSend("message", "thats not a number", event.threadID) }
+								if (isNaN(parseInt(num))) { return requestSend("message", "You must put the number of the ar you want to remove.", event.threadID) }
 								if (parseInt(num) < 1 || parseInt(num) > Object.keys(threads[event.threadID].ar).length) {return requestSend("message", "choose from 1-"+Object.keys(threads[event.threadID].ar).length,event.threadID)}
 								delete threads[event.threadID].ar[Object.keys(threads[event.threadID].ar)[parseInt(num) - 1]]
 								api.setMessageReaction("\uD83D\uDC4D", event.messageID, (err) => { }); return
@@ -678,18 +746,18 @@ var quotelist
 							}
 						}
 
-						if(event.body.toLowerCase()=="!advice"){
+						if(event.body.toLowerCase().startsWith("!advice")){
 							axios.get("https://api.adviceslip.com/advice").then((resp)=>{
 							return requestSend("message", resp.data.slip.advice, event.threadID)
-							})
+							}).catch(err=>{requestSend("message","grabe ha, ibang command naman",event.threadID)})
 						}
 
-						if(event.body.toLowerCase()=="!quote"){
-							var num = Math.round(Math.random()*quotelist.length)
-							return requestSend("message",quotelist[num].text.concat("\n\n-",quotelist[num].author.split(",")[0]),event.threadID)
+						if(event.body.toLowerCase().startsWith("!quote")){
+							var chosenOne = Math.round(Math.random()*(quotelist.length-1))
+							requestSend("message",quotelist[chosenOne].content+"\n\n-"+quotelist[chosenOne].author,event.threadID)	
 						}
 
-
+						console
 						if(event.body.toLowerCase().startsWith("!ship")){
 							if(!event.isGroup){return(requestSend("message","you can only use this command on groupchats."))}
 							requestSend("message","",event.threadID,()=>{
@@ -703,11 +771,7 @@ var quotelist
 											id0 = Object.keys(event.mentions)[0]
 											_();
 										} else {
-											api.getUserID(event.body.substr(6,event.body.length),(err,ret)=>{
-												if(!ret){_(); return id0 = api.getCurrentUserID()  }
-												if(res.participantIDs.includes[ret[0].userID]){id0=ret[0].userID; _()}
-												else {_(); return api.sendMessage("You can only ship people added in this Groupchat.",event.threadID)}
-											})
+											id0 = api.getCurrentUserID()
 										}
 									} else {_()}
 
@@ -716,9 +780,9 @@ var quotelist
 										var id1 = res.participantIDs[Math.round(Math.random()*(res.participantIDs.length-1))]
 
 										api.getUserInfo([id0],(err,info)=>{
-
+											if(err){return requestSend("message","You're using this command too much. Please try again later.",event.threadID)}
 											api.getUserInfo([id1],(err,info1)=>{
-												if(!info1){return}
+												if(!info1){return}												
 												var percent = Math.round(Math.random()*100)
 												var msg = "♡𝐋𝐎𝐕𝐄𝐌𝐀𝐓𝐂𝐇♡\n\n🔻"+"1"+"\n🔺"+"2"+"\n\n"
 												var msg2 = "🔀"+"newname"+"bar"+"percent"+"% "+ (percent == 100 ? "PERFECT!💞" : ( percent>=70 ? "Great😁" : (percent>=40&&percent<70 ? "Not bad😐" : "Bad🤮") ))
@@ -732,8 +796,7 @@ var quotelist
 												}
 												var name2 = info1[Object.keys(info1)[0]]
 												msg2 = msg2.replace("newname", name1.firstName.split(" ")[0].substr(0,Math.ceil(name1.firstName.split(" ")[0].length/2)) +  name2.firstName.split(" ")[0].substr(Math.ceil(name2.firstName.split(" ")[0].length/2),name2.firstName.split(" ")[0].length).toLowerCase() )
-												api.sendMessage({body:msg.replace("1",name1.name).replace("2",name2.name), mentions: [ {tag:name1.name,id:id0} , {tag:name2.name,id:id1} ] },event.threadID,()=>{
-													api.sendMessage(msg2.replace("percent",percent).replace("bar","\n"+bar+" "),event.threadID)
+												api.sendMessage({body:msg.replace("1",name1.name).replace("2",name2.name)+"\n\n"+msg2.replace("percent",percent).replace("bar","\n"+bar+" "), mentions: [ {tag:name1.name,id:id0} , {tag:name2.name,id:id1} ] },event.threadID,()=>{
 													return;
 												})
 											})
@@ -744,33 +807,88 @@ var quotelist
 						}
 
 						if(event.body.toLowerCase().startsWith("!pinterest ")){
-							var query = event.body.replace("!pinterest","")+" pinterest"
-							google.image(query,{safe:false}).then(async(r)=>{
-								var dirs = []
-								var dirnames = []
-								for(i=0;i<6;i++){
-									try{
-									var img = await axios({url:r[i].url,method:"GET",responseType:"stream"})
-									} catch(err) {continue}
-									var name = Math.round(Math.random()*10000)
-									var dir = fs.createWriteStream(name+".jpg")
-									img.data.pipe(dir)
-									dirnames.push(name+".jpg")
-									await new Promise((resolve, reject) => {
-										dir.on('finish', resolve)
-										dir.on('error', reject)
-									})
-									var push = fs.createReadStream(name+".jpg")
-									dirs.push(push)
-								}	
-								if(dirs.length==0){return requestSend("message","no results found",event.threadID)}
-								requestSend("message",{body:"",attachment:dirs},event.threadID,()=>{
-									for(i in dirnames){try{fs.unlinkSync(dirnames[i])} catch(err){continue}}
-								})
-
+							var query = encodeURIComponent(event.body.replace("!pinterest",""))
+							requestSend("message","",event.threadID,async()=>{
+								try{				
+									var res = await axios("https://api.kenliejugarap.com/pinterestbymarjhun/?search="+query)
+									var dirs = []
+									for(i=0;i<5;i++){
+										var img = await axios({url:res.data.data[i],method:'GET',responseType:'stream'})
+										dirs.push(img.data)
+									}
+									api.sendMessage({body:"",attachment:dirs},event.threadID)
+								} catch(err){console.log(err); return api.sendMessage("no results found or command is in cooldown.",event.threadID,()=>{},event.messageID)}
 							})
-						
+										
 						}
+
+						if(event.body.toLowerCase().startsWith("!coinflip ")){
+							try{
+							var bet = parseInt(event.body.split(" ")[1])
+							var space = event.body.split(" ")[2].toLowerCase().replaceAll("s","")
+							console.log(["head","tail"].includes("head"))
+							if(!(["head","tail"].includes(space))){return requestSend("message","engk "+space,event.threadID)}
+							if(isNaN(bet)){return requestSend("message","engkk"+bet,event.threadID)}
+							if(!leaderboard.money[event.senderID]){leaderboard.money[event.senderID] = 0; return requestSend("message","You don't have any money.",event.threadID)}
+							if(bet>leaderboard.money[event.senderID]){return requestSend("message","You only have "+leaderboard.money[event.senderID]+" coins",event.threadID)}
+							rand()
+							} catch(err){console.log(err)}
+							async function rand(){
+								var spaces = ["head","tail"]
+								var res = spaces[Math.round(Math.random())]
+								api.setMessageReaction("",event.messageID)
+								await new Promise(r=>setTimeout(r,1000))
+								requestSend("message","The coin landed "+res+"!\n\n You "+(space==res?"won ":"lost ")+bet+" coins",event.threadID)
+								if(space==res){leaderboard.money[event.senderID]+=bet} else {leaderboard.money[event.senderID]-=bet}
+							}
+							
+						} 
+
+						if(event.body.toLowerCase().startsWith("!quizcount")){return requestSend("message","there are "+quizlist.length+" quizzes.",event.threadID)}
+
+						if(event.body.toLowerCase().startsWith("!quiz")||threads[event.threadID].quiz.status==true){
+							async function timer(){
+								while(threads[event.threadID].quiz.time!=0){
+									if(threads[event.threadID].quiz.status==false){break}
+									await new Promise(r=>setTimeout(r,1000))
+									threads[event.threadID].quiz.time-=1
+									if(threads[event.threadID].quiz.time==0){threads[event.threadID].quiz.status = false; return requestSend("message","You ran out of time. The correct answer is letter "+threads[event.threadID].quiz.answer,event.threadID)}
+								}
+							}
+							if(!event.body.toLowerCase().startsWith("!quiz")){
+								var ans = event.body.toUpperCase().split(" ")[0].replaceAll(".","")
+								if(!["A","B","C","D"].includes(ans)){return}
+								threads[event.threadID].quiz.status = false	
+								threads[event.threadID].quiz.time=-10
+								if(ans==threads[event.threadID].quiz.answer.replace(".","")){
+									requestSend("message","Correct! You won 10 coins.",event.threadID,0,event.messageID)
+									if(!leaderboard.money[event.senderID]){leaderboard.money[event.senderID]=0}
+									leaderboard.money[event.senderID]+=10
+									console.log(leaderboard.money[event.senderID])
+								} else {return requestSend("message","Incorrect. The answer is "+threads[event.threadID].quiz.answer,event.threadID)}
+							
+							} else if(threads[event.threadID].quiz.status==false) {question()} else {return requestSend("message","You must answer the question first.",event.threadID)}
+
+							async function question(){
+								threads[event.threadID].quiz.status=true
+								var res = Math.round(Math.random()*(quizlist.length-1))
+								var answers = []
+								for(i in quizlist[res].incorrect_answers){answers.push(quizlist[res].incorrect_answers[i])}
+								answers.push(quizlist[res].correct_answer)
+								var msg = he.decode(quizlist[res].question) + "\n\n"
+								console.log(answers)
+								var alph = ["A.","B.","C.","D."]
+								for(var i = 0;i<4;i++){
+									var chosenOne = Math.round(Math.random()*(answers.length-1))
+									msg+=alph[i]+he.decode(answers[chosenOne])+"\n"
+									if(answers[chosenOne]==quizlist[res].correct_answer){threads[event.threadID].quiz.answer=alph[i]}
+									answers.splice(chosenOne,1)
+								}
+								threads[event.threadID].quiz.time = 15
+								return requestSend("message",msg+"\n\nYou have 15 seconds to answer! ",event.threadID,()=>{timer()})
+							}
+						} 
+						
 
 						if(event.body.startsWith("!italics")){
 							var _ = event.body.replace("!italics","")
@@ -791,7 +909,7 @@ var quotelist
 						}
 
 						if(event.body.startsWith("!solve")){
-							var updated = encodeURIComponent(event.body.replace("!solve","")).replaceAll("×","*").replaceAll("÷","/").replaceAll("•","*")	
+							var updated = encodeURIComponent(event.body.replace("!solve","").replaceAll("×","*").replaceAll("÷","/").replaceAll("•","*").replaceAll("pi",3.141592653589793238462643383279502884197).replaceAll("÷","/").replaceAll("π","3.141592653589793238462643383279502884197"))
 							console.log(updated)
 							axios("https://newton.vercel.app/api/v2/simplify/"+updated).then(r=>{
 								var msg = r.data.result
@@ -811,9 +929,26 @@ var quotelist
 							})
 						}
 
-						if(event.body.toLowerCase()=="!insult"){
-							axios("https://evilinsult.com/generate_insult.php?lang=en&type=json").then(r=>{return requestSend("message",r.data.insult,event.threadID)})
+						if(event.body.toLowerCase().startsWith("!insult")){
+							var insults = ["hindi mo alam na may putok ka, binabackstab ka na ng mga tao","ampanghe mo","gusto mo insulto ha? PUKINANG INA MO KA IWANAN KA SANA NG TATAY MO","tanginamo pakarat","manahimik ka nalang pwede?","ulol pakarat","POKPOK KA BA","tang ina mo rin e no","wala kang nanay","nakakapikon mukha mo","wala kang tatay","ampon ka lang","bobo ka","ang pangit mo","pabigat ka sa bahay nyo","iniisip ngayon ng mama mo na sana hindi ka nalang pinanganak","wala kang silbi","simula nung pinanganak ka naging malas pamilya mo","inutil ka","mangmang!","hayop ka","sana hindi ka nalang pinanganak","bangs mo hindi pantay","nagsisisi magulang mo at sana may anak din silang matalino","kaya ka iniiwan ng tatay mo","iniisip ng magulang mo na nasa may anak silang hindi pabigat sa bahay","sana pinutok ka nalang sa kumot","aksidente ka lang ginawa","tang ina mo","akala mo siguro cute ka sa pfp mong tanga ka","MAMATAY KA NA GAGO KA","pukinang ina kang hayop ka"]
+							requestSend("message",insults[Math.round(Math.random()*(insults.length-1))],event.threadID)
 						}
+
+						if(event.body.toLowerCase().startsWith("!weather")){
+							var a = ["malamig ata","lameg","so lamig","lamig lang","malameg gar","MALAMEG!!!!!","mya q sabihin bz p","lamig sana macuddle","malamig putanginamo","malamig baby","malamig putanginmo","it's cold po baby, make sure you have ur blankets po","lamig lng"]
+							return requestSend("message",a[Math.round(Math.random()*(a.length-1))],event.threadID,0,event.messageID)
+						}
+
+						if(event.body.toLowerCase().startsWith("!ai")){
+							requestSend("message","",event.threadID,async()=>{
+								try{
+									var res = await axios("https://api.kenliejugarap.com/freegpt4o8k/?question="+encodeURIComponent(event.body.replace("!ai","")))
+									return api.sendMessage(res.data.response.split("Is this answer helpful to you?")[0].replaceAll("*",""),event.threadID,0,event.messageID)
+								} catch(err){return api.sendMessage("No results found, try again.",event.threadID)}
+							})
+						}
+
+
 
 						break;
 	
