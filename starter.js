@@ -1,5 +1,5 @@
 const forever = require('forever-monitor')
-const appStateGetter = require("./FBStater/index.js")
+const appStateGetter = require("./getAppstate.js")
 const fs = require("fs")
 var restartAttempts = 0
 var time;
