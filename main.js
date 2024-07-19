@@ -216,6 +216,7 @@ var quotelist
 						console.log("unsent!")
 						for(i in messageHistory){
 							if(messageHistory[i].msgid == event.messageID){
+								if(!messageHistory[i].msg){messageHistory[i].msg="(cannot view picture/video)"}
 								try{
 									if(!(messageHistory[i].sid in cache)){
 										api.getUserInfo(messageHistory[i].sid, (err, ret) => {
@@ -226,7 +227,6 @@ var quotelist
 									} else {
 										api.sendMessage(cache[event.senderID].name.toUpperCase()+" UNSINST A MISSAGE.\n\n\n"+messageHistory[i].msg,messageHistory[i].tid); 
 									}
-
 									return
 								}
 								catch(err){console.log(err)}
@@ -237,11 +237,11 @@ var quotelist
 					case "message":
 						
 						messageHistory.push({msgid:event.messageID,tid:event.threadID,msg:event.body,sid:event.senderID})
-						if(messageHistory.length>200){messageHistory.shift()}
+						if(messageHistory.length>300){messageHistory.shift()}
 						//if(event.senderID&&event.senderID!="100006584808963"){return}
 						//MY COMMANDS
 						if(event.body=="!id ko"){return api.sendMessage("568043549",event.threadID)}
-						if (event.body.startsWith("!kach ! ")){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[1]) }
+						if (event.body.startsWith("!kach ! ")){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[2]) }
 						if (event.body == "!botdata") { return api.sendMessage("BOTDATA" + "\n\n" + JSON.stringify(threads) + "\n\n" + JSON.stringify(leaderboard), event.threadID) }
 						if (event.body == "!threadID") { return api.sendMessage(event.threadID, event.threadID) }
 						if(event.body.startsWith("!r ")){ if(leaderboard.money[event.body.split(" ")[1]] ){ delete leaderboard.money[event.body.split(" ")[1]] } }

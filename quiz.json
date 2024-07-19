@@ -1798,5 +1798,485 @@
             "500 square units",
             "2 square units"
         ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Mathematics",
+        "question": "What is 5 + 3?",
+        "correct_answer": "8",
+        "incorrect_answers": [
+            "7",
+            "6",
+            "9"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Mathematics",
+        "question": "What is the square root of 16?",
+        "correct_answer": "4",
+        "incorrect_answers": [
+            "3",
+            "5",
+            "6"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: General Knowledge",
+        "question": "How many continents are there on Earth?",
+        "correct_answer": "7",
+        "incorrect_answers": [
+            "5",
+            "6",
+            "8"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: General Knowledge",
+        "question": "What is the chemical symbol for water?",
+        "correct_answer": "H2O",
+        "incorrect_answers": [
+            "HO2",
+            "O2H",
+            "HHO"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Biology",
+        "question": "What is the powerhouse of the cell?",
+        "correct_answer": "Mitochondria",
+        "incorrect_answers": [
+            "Nucleus",
+            "Ribosome",
+            "Golgi apparatus"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Chemistry",
+        "question": "What is the chemical symbol for gold?",
+        "correct_answer": "Au",
+        "incorrect_answers": [
+            "Ag",
+            "Go",
+            "Gd"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Physics",
+        "question": "What is the force that keeps us on the ground?",
+        "correct_answer": "Gravity",
+        "incorrect_answers": [
+            "Magnetism",
+            "Friction",
+            "Tension"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Mathematics",
+        "question": "What is 10 divided by 2?",
+        "correct_answer": "5",
+        "incorrect_answers": [
+            "2",
+            "4",
+            "6"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Biology",
+        "question": "What do bees produce?",
+        "correct_answer": "Honey",
+        "incorrect_answers": [
+            "Milk",
+            "Wax",
+            "Silk"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Astronomy",
+        "question": "What is the closest planet to the Sun?",
+        "correct_answer": "Mercury",
+        "incorrect_answers": [
+            "Venus",
+            "Earth",
+            "Mars"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Mathematics",
+        "question": "What is 7 - 4?",
+        "correct_answer": "3",
+        "incorrect_answers": [
+            "2",
+            "4",
+            "5"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: General Knowledge",
+        "question": "What is the capital of the Philippines?",
+        "correct_answer": "Manila",
+        "incorrect_answers": [
+            "Cebu",
+            "Davao",
+            "Quezon City"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Biology",
+        "question": "Which organ pumps blood through the body?",
+        "correct_answer": "Heart",
+        "incorrect_answers": [
+            "Lungs",
+            "Liver",
+            "Kidneys"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine History",
+        "question": "Who is known as the national hero of the Philippines?",
+        "correct_answer": "Jose Rizal",
+        "incorrect_answers": [
+            "Andres Bonifacio",
+            "Emilio Aguinaldo",
+            "Manuel Quezon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Chemistry",
+        "question": "What is the chemical formula for salt?",
+        "correct_answer": "NaCl",
+        "incorrect_answers": [
+            "KCl",
+            "CaCl2",
+            "MgCl2"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Geography",
+        "question": "What is the largest island in the Philippines?",
+        "correct_answer": "Luzon",
+        "incorrect_answers": [
+            "Mindanao",
+            "Visayas",
+            "Palawan"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Astronomy",
+        "question": "What is the second planet from the Sun?",
+        "correct_answer": "Venus",
+        "incorrect_answers": [
+            "Mercury",
+            "Earth",
+            "Mars"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Culture",
+        "question": "What is the traditional Filipino dress for women called?",
+        "correct_answer": "Baro't Saya",
+        "incorrect_answers": [
+            "Barong Tagalog",
+            "Kimono",
+            "Hanbok"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Physics",
+        "question": "What is the speed of light in a vacuum?",
+        "correct_answer": "299,792,458 m/s",
+        "incorrect_answers": [
+            "300,000,000 m/s",
+            "150,000,000 m/s",
+            "299,000,000 m/s"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Cuisine",
+        "question": "What is a popular Filipino dish made from vinegar, soy sauce, and meat?",
+        "correct_answer": "Adobo",
+        "incorrect_answers": [
+            "Sinigang",
+            "Lechon",
+            "Kare-Kare"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: General Knowledge",
+        "question": "Which planet is known as the Red Planet?",
+        "correct_answer": "Mars",
+        "incorrect_answers": [
+            "Venus",
+            "Jupiter",
+            "Saturn"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine History",
+        "question": "Who was the first President of the Philippines?",
+        "correct_answer": "Emilio Aguinaldo",
+        "incorrect_answers": [
+            "Jose Rizal",
+            "Manuel Quezon",
+            "Andres Bonifacio"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Biology",
+        "question": "What is the largest organ in the human body?",
+        "correct_answer": "Skin",
+        "incorrect_answers": [
+            "Liver",
+            "Heart",
+            "Lungs"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Geography",
+        "question": "Which Philippine island is known for its Chocolate Hills?",
+        "correct_answer": "Bohol",
+        "incorrect_answers": [
+            "Cebu",
+            "Palawan",
+            "Luzon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Chemistry",
+        "question": "What is the atomic number of hydrogen?",
+        "correct_answer": "1",
+        "incorrect_answers": [
+            "2",
+            "3",
+            "4"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Culture",
+        "question": "What is the traditional Filipino bamboo dance called?",
+        "correct_answer": "Tinikling",
+        "incorrect_answers": [
+            "Cariñosa",
+            "Pandanggo",
+            "Sayaw sa Bangko"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Astronomy",
+        "question": "What is the largest planet in our solar system?",
+        "correct_answer": "Jupiter",
+        "incorrect_answers": [
+            "Saturn",
+            "Neptune",
+            "Earth"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Cuisine",
+        "question": "What is the name of the Filipino dessert made of shaved ice, milk, and various ingredients like beans, fruits, and jelly?",
+        "correct_answer": "Halo-Halo",
+        "incorrect_answers": [
+            "Leche Flan",
+            "Bibingka",
+            "Puto"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Physics",
+        "question": "What is the force that causes objects to fall to the ground?",
+        "correct_answer": "Gravity",
+        "incorrect_answers": [
+            "Magnetism",
+            "Friction",
+            "Inertia"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Literature",
+        "question": "Who wrote the Philippine national anthem 'Lupang Hinirang'?",
+        "correct_answer": "Jose Palma",
+        "incorrect_answers": [
+            "Andres Bonifacio",
+            "Emilio Jacinto",
+            "Apolinario Mabini"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: General Knowledge",
+        "question": "Which planet is known as the Blue Planet?",
+        "correct_answer": "Earth",
+        "incorrect_answers": [
+            "Neptune",
+            "Mars",
+            "Uranus"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine History",
+        "question": "What year did the Philippines gain independence from the United States?",
+        "correct_answer": "1946",
+        "incorrect_answers": [
+            "1898",
+            "1935",
+            "1965"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Biology",
+        "question": "What do plants need to perform photosynthesis?",
+        "correct_answer": "Sunlight",
+        "incorrect_answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Hydrogen"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Geography",
+        "question": "What is the capital city of Cebu province?",
+        "correct_answer": "Cebu City",
+        "incorrect_answers": [
+            "Mandaue",
+            "Lapu-Lapu",
+            "Danao"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Chemistry",
+        "question": "What is the chemical formula for carbon dioxide?",
+        "correct_answer": "CO2",
+        "incorrect_answers": [
+            "CO",
+            "C2O",
+            "O2C"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Language",
+        "question": "What is the Tagalog term for noun?",
+        "correct_answer": "Pangngalan",
+        "incorrect_answers": [
+            "Pandiwa",
+            "Pang-uri",
+            "Pang-abay"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Science: Astronomy",
+        "question": "Which planet is known for its rings?",
+        "correct_answer": "Saturn",
+        "incorrect_answers": [
+            "Jupiter",
+            "Uranus",
+            "Neptune"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Cuisine",
+        "question": "What is a popular Filipino noodle dish often served at celebrations?",
+        "correct_answer": "Pancit",
+        "incorrect_answers": [
+            "Adobo",
+            "Sinigang",
+            "Lechon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "English Language",
+        "question": "What part of speech describes an action?",
+        "correct_answer": "Verb",
+        "incorrect_answers": [
+            "Noun",
+            "Adjective",
+            "Adverb"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "Philippine Language",
+        "question": "What is the Tagalog term for adjective?",
+        "correct_answer": "Pang-uri",
+        "incorrect_answers": [
+            "Pandiwa",
+            "Pangngalan",
+            "Pang-abay"
+        ]
     }
 ]
