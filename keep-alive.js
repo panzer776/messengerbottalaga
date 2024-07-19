@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
 
 async function sendSignal(){
     await new Promise(r=>setTimeout(r,30000))
-axios({method:"GET",url:"https://messengerbottalaga.onrender.com/"}).catch(err=>{console.log(err)})
-sendSignal()
+    axios({method:"GET",url:"https://messengerbottalaga.onrender.com/"}).catch(err=>{console.log(err)})
+    sendSignal()
 }
 sendSignal()

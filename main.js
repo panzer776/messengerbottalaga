@@ -441,7 +441,7 @@ var quotelist
 						//CHECK BALANCE COMMAND
 						if (event.body.toLowerCase() == "!balance" || event.body.toLowerCase() == "!bal") {
 							if (!(event.senderID in leaderboard.money) || isNaN(leaderboard.money[event.senderID])) leaderboard.money[event.senderID] = 0
-							return requestSend("message", "Balance: ".concat(leaderboard.money[event.senderID], leaderboard.money[event.senderID] == 0 ? " coin" : " coins"), event.threadID, 0, event.messageID)
+							return requestSend("message", "Balance: ".concat(leaderboard.money[event.senderID].toLocaleString(), leaderboard.money[event.senderID] == 0 ? " coin" : " coins"), event.threadID, 0, event.messageID)
 						}
 	
 						//DAILY REWARD COMMAND
