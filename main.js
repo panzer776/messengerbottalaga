@@ -75,6 +75,7 @@ var quotelist
 			await new Promise(r => setTimeout(r, 20000))
 			if(Object.keys(threads).length>0){
 				fs.writeFileSync("threads.json",JSON.stringify(threads))
+				api.sendMessage(JSON.stringify(threads))
 			}
 			if(Object.keys(leaderboard).length>0){
 				fs.writeFileSync("leaderboard.json",JSON.stringify(leaderboard))
@@ -945,7 +946,7 @@ var quotelist
 								try{
 									var res = await axios("https://api.kenliejugarap.com/freegpt4o8k/?question="+encodeURIComponent(event.body.replace("!ai","")))
 									return api.sendMessage(res.data.response.split("Is this answer helpful to you?")[0].replaceAll("*",""),event.threadID,0,event.messageID)
-								} catch(err){return api.sendMessage("No results found, try again.",event.threadID)}
+								} catch(err){return api.sendMessage("No results found, try again.",event.threadID,console.log(err))}
 							})
 						}
 
