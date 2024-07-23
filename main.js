@@ -946,8 +946,18 @@ var quotelist
 								try{
 									var res = await axios("https://api.kenliejugarap.com/freegpt4o8k/?question="+encodeURIComponent(event.body.replace("!ai","")))
 									return api.sendMessage(res.data.response.split("Is this answer helpful to you?")[0].replaceAll("*",""),event.threadID,0,event.messageID)
-								} catch(err){return api.sendMessage("No results found, try again.",event.threadID,console.log(err))}
+								} catch(err){return api.sendMessage("No results found, try again.",event.threadID),console.log(err)}
 							})
+						}
+
+						if(event.body.toLowerCase()=="!unsend"){
+							if(!(event.type=="message_reply")){return requestSend("Please reply to a message that i will unsend",event.threadID)}
+							if(event.messageReply.senderID!=api.getCurrentUserID()){return api.sendMessage("I can only unsend messages sent by me",event.threadID)}
+							console.log(event.messageReply)
+							try{
+								api.unsendMessage(event.messageReply.messageID,(err)=>{if(err){console.log(err)}})
+							}
+							catch(error){requestSend("cannot unsend message sent more than 10 minutes ago",event.threadID)}
 						}
 
 
