@@ -32,6 +32,8 @@ var mp3 = {}
 var anons = {}
 var sources = {}
 
+var chatblockHibernate = []
+
 var botname = "Ferdinand Marcos(BOT)"
 
 var lag = 1500 //ms, delays a request to prevent being flagged as bot(di ko alam kung gagana)
@@ -106,7 +108,17 @@ var quotelist
 							await new Promise(resolve => setTimeout(resolve, lag))// //WAIT 1.5 SECONDS BEFORE RESPONDING TO DISGUISE AS HUMAN(di ko rin alam kung gagana)
 							if(!eventTraffic[0][1]){eventTraffic.shift(); callback ? callback() : "" ; end(); continue}
 							if(eventTraffic[0][0] == "message_google"){await new Promise(resolve => setTimeout(resolve, lag+2000))} //WAITS ANOTHER 2 SECONDS KASI ANDAMING ITTYPE KUNYARI
-							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log("HAHAHAHA".repeat(10),err)};!callback ? "" : callback(err, inf) },eventTraffic[0][3])
+							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { 
+							!callback ? "" : callback(err, inf);
+							if(err&&err.errorSummary.includes("Temporarily Blocked")){
+								if(chatblockHibernate.includes(eventTraffic[0][2])){return} else {chatblockHibernate.push(eventTraffic[0][2])}
+								api.changeNickname("Bot is temporarily Chatblocked. Please try again after 1 hour.",api.getCurrentUserID())
+							} else if (chatblockHibernate.includes(eventTraffic[0][2])){
+								api.changeNickname("Ferdinand Marcos(BOT)",api.getCurrentUserID())
+								chatblockHibernate.splice(chatblockHibernate.indexOf(eventTraffic[0][2],1))
+							}
+							}
+							,eventTraffic[0][3])
 						
 						} else if (eventTraffic[0][0] == "changeNickname") {	
 						api.changeNickname(eventTraffic[0][1], eventTraffic[0][2], eventTraffic[0][4], (err) => {
@@ -239,6 +251,7 @@ var quotelist
 						
 						messageHistory.push({msgid:event.messageID,tid:event.threadID,msg:event.body,sid:event.senderID})
 						if(messageHistory.length>300){messageHistory.shift()}
+						if(chatblockHibernate.includes(event.threadID)){return}
 						//if(event.senderID&&event.senderID!="100006584808963"){return}
 
 
