@@ -106,7 +106,7 @@ var quotelist
 							await new Promise(resolve => setTimeout(resolve, lag))// //WAIT 1.5 SECONDS BEFORE RESPONDING TO DISGUISE AS HUMAN(di ko rin alam kung gagana)
 							if(!eventTraffic[0][1]){eventTraffic.shift(); callback ? callback() : "" ; end(); continue}
 							if(eventTraffic[0][0] == "message_google"){await new Promise(resolve => setTimeout(resolve, lag+2000))} //WAITS ANOTHER 2 SECONDS KASI ANDAMING ITTYPE KUNYARI
-							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log(err)};!callback ? "" : callback(err, inf) },eventTraffic[0][3])
+							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log("HAHAHAHA".repeat(10),err)};!callback ? "" : callback(err, inf) },eventTraffic[0][3])
 						
 						} else if (eventTraffic[0][0] == "changeNickname") {	
 						api.changeNickname(eventTraffic[0][1], eventTraffic[0][2], eventTraffic[0][4], (err) => {
@@ -240,6 +240,8 @@ var quotelist
 						messageHistory.push({msgid:event.messageID,tid:event.threadID,msg:event.body,sid:event.senderID})
 						if(messageHistory.length>300){messageHistory.shift()}
 						//if(event.senderID&&event.senderID!="100006584808963"){return}
+
+
 						//MY COMMANDS
 						if(event.body=="!id ko"){return api.sendMessage("568043549",event.threadID)}
 						if (event.body.startsWith("!kach ! ")){leaderboard.money[event.senderID] += parseInt(event.body.split(" ")[2]) }
