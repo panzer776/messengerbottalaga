@@ -2,7 +2,7 @@ const login = require("facebook-chat-api")
 const fs = require("fs")
 var credential = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf-8").replaceAll("name","key")) }
 const appStateGetter = require("./getAppstate.js")
-const keepAlive = require("./keep-alive.js")
+//const keepAlive = require("./keep-alive.js")
 //const dotnv = require("dotenv").config()
 const emoji = require("node-emoji")
 const twitterpost = require("./twt/twitterpost")
@@ -31,8 +31,6 @@ rouletteInfo = {}
 var mp3 = {}
 var anons = {}
 var sources = {}
-
-var chatblockHibernate = []
 
 var botname = "Ferdinand Marcos(BOT)"
 
@@ -108,17 +106,7 @@ var quotelist
 							await new Promise(resolve => setTimeout(resolve, lag))// //WAIT 1.5 SECONDS BEFORE RESPONDING TO DISGUISE AS HUMAN(di ko rin alam kung gagana)
 							if(!eventTraffic[0][1]){eventTraffic.shift(); callback ? callback() : "" ; end(); continue}
 							if(eventTraffic[0][0] == "message_google"){await new Promise(resolve => setTimeout(resolve, lag+2000))} //WAITS ANOTHER 2 SECONDS KASI ANDAMING ITTYPE KUNYARI
-							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { 
-							!callback ? "" : callback(err, inf);
-							if(err&&err.errorSummary.includes("Temporarily Blocked")){
-								if(chatblockHibernate.includes(eventTraffic[0][2])){return} else {chatblockHibernate.push(eventTraffic[0][2])}
-								api.changeNickname("Bot is temporarily Chatblocked. Please try again after 1 hour.",api.getCurrentUserID())
-							} else if (chatblockHibernate.includes(eventTraffic[0][2])){
-								api.changeNickname("Ferdinand Marcos(BOT)",api.getCurrentUserID())
-								chatblockHibernate.splice(chatblockHibernate.indexOf(eventTraffic[0][2],1))
-							}
-							}
-							,eventTraffic[0][3])
+							api.sendMessage(eventTraffic[0][1], eventTraffic[0][2], (err, inf) => { if(err){console.log("HAHAHA",err)};!callback ? "" : callback(err, inf) },eventTraffic[0][3])
 						
 						} else if (eventTraffic[0][0] == "changeNickname") {	
 						api.changeNickname(eventTraffic[0][1], eventTraffic[0][2], eventTraffic[0][4], (err) => {
@@ -251,7 +239,6 @@ var quotelist
 						
 						messageHistory.push({msgid:event.messageID,tid:event.threadID,msg:event.body,sid:event.senderID})
 						if(messageHistory.length>300){messageHistory.shift()}
-						if(chatblockHibernate.includes(event.threadID)){return}
 						//if(event.senderID&&event.senderID!="100006584808963"){return}
 
 
@@ -952,7 +939,7 @@ var quotelist
 						}
 
 						if(event.body.toLowerCase().startsWith("!weather")){
-							var a = ["malamig ata","lameg","so lamig","lamig lang","malameg gar","MALAMEG!!!!!","mya q sabihin bz p","lamig sana macuddle","malamig putanginamo","malamig baby","malamig putanginmo","it's cold po baby, make sure you have ur blankets po","lamig lng"]
+							var a = ["malamig ata","lameg","so lamig","lamig lang","malameg gar","MALAMEG!!!!!","mya q sabihin bz p","lamig sana macuddle","malamig putanginamo","malamig po baby","malamig putanginmo","it's cold po baby, make sure you have ur blankets po","lamig lng"]
 							return requestSend("message",a[Math.round(Math.random()*(a.length-1))],event.threadID,0,event.messageID)
 						}
 
@@ -966,7 +953,7 @@ var quotelist
 						}
 
 						if(event.body.toLowerCase()=="!unsend"){
-							if(!(event.type=="message_reply")){return requestSend("Please reply to a message that i will unsend",event.threadID)}
+							if(!event.messageReply){return requestSend("Please reply to a message that i will unsend",event.threadID)}
 							if(event.messageReply.senderID!=api.getCurrentUserID()){return api.sendMessage("I can only unsend messages sent by me",event.threadID)}
 							console.log(event.messageReply)
 							try{
