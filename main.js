@@ -62,7 +62,6 @@ var quotelist
 	login(credential, (loginerr, api) => {	
 		if(loginerr&&loginerr.error.toString().includes("Error retrieving userID")){
 			appStateGetter.main()
-			return
 		}
 		try{
 		threads = JSON.parse(fs.readFileSync("threads.json"))
